@@ -140,6 +140,8 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         else{
         }
     }
+    
+    
     @objc func donePicker() {
         currentTextFieldName.resignFirstResponder()
     }

@@ -18,7 +18,12 @@
 		C56A522C244A6FB200781525 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A522B244A6FB200781525 /* UserInfoViewController.swift */; };
 		C56A522E244A764E00781525 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A522D244A764E00781525 /* MainScreenViewController.swift */; };
 		C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56BBF982445F31F0046C7FA /* GoogleService-Info.plist */; };
+		C56C978F244F1644006D44C9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C978D244F1644006D44C9 /* TableViewCell.swift */; };
+		C56C9790244F1644006D44C9 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56C978E244F1644006D44C9 /* TableViewCell.xib */; };
+		C56C9792244F18A8006D44C9 /* RequestFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56C9791244F18A8006D44C9 /* RequestFile.swift */; };
 		C57DEBDC244103C1005A7EBE /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DEBDB244103C1005A7EBE /* InfoViewController.swift */; };
+		C5CB56AF244DFD2E00F3D81A /* BloodRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB56AE244DFD2E00F3D81A /* BloodRequestTableViewController.swift */; };
+		C5CB56B1244DFD7300F3D81A /* SubmitRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +40,12 @@
 		C56A522B244A6FB200781525 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C56A522D244A764E00781525 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		C56BBF982445F31F0046C7FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C56C978D244F1644006D44C9 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		C56C978E244F1644006D44C9 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		C56C9791244F18A8006D44C9 /* RequestFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFile.swift; sourceTree = "<group>"; };
 		C57DEBDB244103C1005A7EBE /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		C5CB56AE244DFD2E00F3D81A /* BloodRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodRequestTableViewController.swift; sourceTree = "<group>"; };
+		C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRequestViewController.swift; sourceTree = "<group>"; };
 		CF2C6ECA10307525D8D29E6C /* Pods_Blood_Bank.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blood_Bank.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB8BD2177ED715CF5B376915 /* Pods-Blood Bank.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blood Bank.release.xcconfig"; path = "Target Support Files/Pods-Blood Bank/Pods-Blood Bank.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +105,9 @@
 		C55EC8792440D3AC004CF8BA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C56C978D244F1644006D44C9 /* TableViewCell.swift */,
+				C56C978E244F1644006D44C9 /* TableViewCell.xib */,
+				C56C9791244F18A8006D44C9 /* RequestFile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +131,8 @@
 				C57DEBDB244103C1005A7EBE /* InfoViewController.swift */,
 				C56A522B244A6FB200781525 /* UserInfoViewController.swift */,
 				C56A522D244A764E00781525 /* MainScreenViewController.swift */,
+				C5CB56AE244DFD2E00F3D81A /* BloodRequestTableViewController.swift */,
+				C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C55602E5243E231C0012AAC8 /* LaunchScreen.storyboard in Resources */,
+				C56C9790244F1644006D44C9 /* TableViewCell.xib in Resources */,
 				C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */,
 				C55602E2243E231C0012AAC8 /* Assets.xcassets in Resources */,
 				C55602E0243E23150012AAC8 /* Main.storyboard in Resources */,
@@ -254,9 +270,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5CB56B1244DFD7300F3D81A /* SubmitRequestViewController.swift in Sources */,
+				C5CB56AF244DFD2E00F3D81A /* BloodRequestTableViewController.swift in Sources */,
+				C56C9792244F18A8006D44C9 /* RequestFile.swift in Sources */,
 				C55EC8802440D7B3004CF8BA /* SignInViewController.swift in Sources */,
 				C56A522C244A6FB200781525 /* UserInfoViewController.swift in Sources */,
 				C56A522E244A764E00781525 /* MainScreenViewController.swift in Sources */,
+				C56C978F244F1644006D44C9 /* TableViewCell.swift in Sources */,
 				C55EC87E2440D4BE004CF8BA /* SignUpViewController.swift in Sources */,
 				C55602DD243E23150012AAC8 /* ViewController.swift in Sources */,
 				C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */,
