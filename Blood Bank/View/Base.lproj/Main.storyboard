@@ -789,6 +789,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="donarTableView" destination="bvk-gV-ATm" id="Hcu-Gi-Imk"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYv-9f-bDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
