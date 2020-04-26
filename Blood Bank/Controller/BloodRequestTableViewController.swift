@@ -9,9 +9,11 @@
 import UIKit
 import Firebase
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class BloodRequestTableViewController: UITableViewController ,NVActivityIndicatorViewable{
     var request_Array = [Requests]()
+    var color:String = ""
 
     @IBOutlet var requestTableView: UITableView!
     override func viewDidLoad() {
@@ -59,6 +61,12 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
         cell.lbl_Location.text = request_Array[indexPath.row].location
         cell.txt_PhoneNo.text = request_Array[indexPath.row].phoneNo
         cell.phone_No = request_Array[indexPath.row].phoneNo
+        let colorName = UIColor(hexString: color )
+        
+        if let color = colorName?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(17)) {
+            cell.backgroundColor = color
+            //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+        }
         return cell
     }
     
@@ -77,6 +85,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             user_Requests.phoneNo = snapshotValue["Phone No"]!
             
             self.request_Array.append(user_Requests)
+            self.color = UIColor.flatSand().hexValue()
             self.configureTableView()
             self.requestTableView.reloadData()
         }

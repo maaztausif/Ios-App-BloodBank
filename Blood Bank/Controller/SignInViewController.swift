@@ -19,6 +19,7 @@ class SignInViewController: UIViewController ,NVActivityIndicatorViewable{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.flatCoffee()
         btn_SignIn.layer.cornerRadius = 20
         btn_SignIn.clipsToBounds = true
 

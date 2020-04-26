@@ -21,6 +21,8 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
     @IBOutlet var btn_signUp: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.flatCoffee()
+
         btn_signUp.layer.cornerRadius = 20
         btn_signUp.clipsToBounds = true
     }

@@ -8,12 +8,14 @@
 
 import UIKit
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class ViewController: UIViewController ,NVActivityIndicatorViewable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = UIColor.flatCoffeeColorDark()
+        
     }
 
     @IBAction func signUp(_ sender: Any) {

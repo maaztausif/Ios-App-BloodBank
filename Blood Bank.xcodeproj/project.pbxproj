@@ -13,8 +13,8 @@
 		C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55602DA243E23150012AAC8 /* AppDelegate.swift */; };
 		C55602DD243E23150012AAC8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55602DC243E23150012AAC8 /* ViewController.swift */; };
 		C55602E0243E23150012AAC8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55602DE243E23150012AAC8 /* Main.storyboard */; };
-		C55602E2243E231C0012AAC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C55602E1243E231C0012AAC8 /* Assets.xcassets */; };
 		C55602E5243E231C0012AAC8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C55602E3243E231C0012AAC8 /* LaunchScreen.storyboard */; };
+		C558722F2455BE42008B8806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C558722E2455BE42008B8806 /* Assets.xcassets */; };
 		C55EC87E2440D4BE004CF8BA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EC87D2440D4BE004CF8BA /* SignUpViewController.swift */; };
 		C55EC8802440D7B3004CF8BA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EC87F2440D7B3004CF8BA /* SignInViewController.swift */; };
 		C56A522C244A6FB200781525 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A522B244A6FB200781525 /* UserInfoViewController.swift */; };
@@ -39,9 +39,9 @@
 		C55602DA243E23150012AAC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C55602DC243E23150012AAC8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C55602DF243E23150012AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C55602E1243E231C0012AAC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C55602E4243E231C0012AAC8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C55602E6243E231C0012AAC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C558722E2455BE42008B8806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../todoey/todoey/supporting files/Assets.xcassets"; sourceTree = "<group>"; };
 		C55EC87D2440D4BE004CF8BA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C55EC87F2440D7B3004CF8BA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		C56A522B244A6FB200781525 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
@@ -103,11 +103,11 @@
 			children = (
 				C56BBF982445F31F0046C7FA /* GoogleService-Info.plist */,
 				C55602E6243E231C0012AAC8 /* Info.plist */,
+				C558722E2455BE42008B8806 /* Assets.xcassets */,
 				C55EC8792440D3AC004CF8BA /* Model */,
 				C55EC87B2440D3CC004CF8BA /* Controller */,
 				C55EC87A2440D3BA004CF8BA /* View */,
 				C55EC87C2440D3D6004CF8BA /* Supporting file */,
-				C55602E1243E231C0012AAC8 /* Assets.xcassets */,
 			);
 			path = "Blood Bank";
 			sourceTree = "<group>";
@@ -232,7 +232,7 @@
 				C56C9790244F1644006D44C9 /* TableViewCell.xib in Resources */,
 				C56F330524507E1800E9DEF3 /* DonarListTableViewCell.xib in Resources */,
 				C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */,
-				C55602E2243E231C0012AAC8 /* Assets.xcassets in Resources */,
+				C558722F2455BE42008B8806 /* Assets.xcassets in Resources */,
 				C55602E0243E23150012AAC8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

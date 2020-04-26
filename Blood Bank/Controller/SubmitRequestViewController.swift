@@ -34,7 +34,7 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         txt_Location.delegate = self
         txt_RequestFor.delegate = self
         
-        
+        view.backgroundColor = UIColor.flatCoffee()
         
         
         let toolBar = UIToolbar()

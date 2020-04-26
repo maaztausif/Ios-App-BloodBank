@@ -10,6 +10,7 @@ import UIKit
 import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NVActivityIndicatorViewable {
     
@@ -41,6 +42,7 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.flatCoffee()
         
         btn_Main.layer.cornerRadius = 20
         btn_Main.clipsToBounds = true

@@ -10,6 +10,7 @@ import UIKit
 import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
+import ChameleonFramework
 
 class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,NVActivityIndicatorViewable {
 
@@ -36,8 +37,8 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         txt_BloodType.delegate = self
         txt_LastBloodDonate.delegate =  self
         
-        
-        
+        view.backgroundColor = UIColor.flatCoffee()
+
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true

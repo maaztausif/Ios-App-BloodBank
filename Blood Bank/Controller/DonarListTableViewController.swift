@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class DonarListTableViewController: UITableViewController {
     
@@ -15,13 +16,15 @@ class DonarListTableViewController: UITableViewController {
     
     
     var donarListArray = [Donar]()
-
+    var color : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
-
         retrieveDonarLis()
+        tableView.separatorStyle = .none
+
+        
     }
 
     // MARK: - Table view data source
@@ -45,7 +48,21 @@ class DonarListTableViewController: UITableViewController {
         cell.lbl_LastBloodDonate.text = donarListArray[indexPath.row].lastBloodDonate
         cell.txt_phoneNo.text = donarListArray[indexPath.row].phoneNo
         cell.phone_No = donarListArray[indexPath.row].phoneNo
+    //cell.backgroundColor = UIColor(hexString: "1D9BF6")
+
+        let colorName = UIColor(hexString: color )
+
+        if let color = colorName?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(17)) {
+            cell.backgroundColor = color
+            //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+        }
+
+
         return cell
+        
+        
+        
+        
     }
  
 
@@ -58,18 +75,19 @@ class DonarListTableViewController: UITableViewController {
     */
 
     func retrieveDonarLis(){
-        let user_Donar = Donar()
         let donarDB = Database.database().reference().child("Donar List")
         donarDB.observe(.childAdded) { (Snapshot) in
             print(Snapshot)
             let snapshotValue = Snapshot.value as! Dictionary<String,String>
+            let user_Donar = Donar()
             user_Donar.name = snapshotValue["Name"]!
             user_Donar.gender = snapshotValue["Gender"]!
             user_Donar.blooadType = snapshotValue["Blood Type"]!
             user_Donar.lastBloodDonate = snapshotValue["Last Blood Donate"]!
             user_Donar.phoneNo = snapshotValue["Phone No"]!
+            //self.color = UIColor.randomFlat().hexValue()
+            self.color = UIColor.flatSand()?.hexValue()
             self.donarListArray.append(user_Donar)
-            print("\(user_Donar.name)=========================================")
             self.donarTableView.reloadData()
         }
     }
