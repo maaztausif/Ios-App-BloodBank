@@ -9,8 +9,9 @@
 import UIKit
 import TextFieldEffects
 import Firebase
+import NVActivityIndicatorView
 
-class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate {
+class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NVActivityIndicatorViewable {
     
     var user_Id = ""
 
@@ -147,9 +148,10 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
 
     @IBAction func btn_Send_ToMain(_ sender: Any) {
+        progressLoading()
         
         if txt_Gender.text == "" || txt_Disease.text == "" || txt_lastBD.text == "" || txt_Area.text == "" || txt_DOB.text == "" || txt_Name.text == "" || txt_Email.text == "" || txt_PhoneNo.text == "" || txt_BloodType.text == ""{
-            
+            self.stopAnimating()
             print("some field is missing=====================================")
             
         }else{
@@ -163,24 +165,23 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             
             userDB.childByAutoId().setValue(userDic) { (error, refrence) in
                 if error != nil{
+                    self.stopAnimating()
                     print("saving database error=================================================")
                 }else{
                     print("datbase saving complete in firebase====================================")
+                    self.stopAnimating()
                     self.performSegue(withIdentifier: "goToMain", sender: self)
                 }
             }
-            
-//            userDB.childByAutoId().setValue(userDic){(error,refrense)
-//                in
-//                if error != nil{
-//                    print("saving database error")
-//                }else{
-//                    print("datbase saving complete in firebase")
-//                    self.performSegue(withIdentifier: "goToMain", sender: self)
-//                }
-//
-//            }
+
         }
+    }
+    
+    
+    func progressLoading(){
+        let size = CGSize(width: 100, height: 100)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)
+        
     }
     
  }

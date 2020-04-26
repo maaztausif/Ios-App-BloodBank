@@ -93,6 +93,9 @@
                         <rect key="frame" x="292" y="16" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Call"/>
+                        <connections>
+                            <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T48-vl-vIP"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03E-uI-27o">
                         <rect key="frame" x="292" y="116" width="33" height="30"/>
@@ -109,7 +112,7 @@
                 <outlet property="lbl_RequestFor" destination="lXX-Mv-FaB" id="Wxv-BS-Thh"/>
                 <outlet property="txt_PhoneNo" destination="Sih-0r-zJq" id="e8f-3D-G1F"/>
             </connections>
-            <point key="canvasLocation" x="-436.23188405797106" y="16.741071428571427"/>
+            <point key="canvasLocation" x="-781" y="7"/>
         </tableViewCell>
     </objects>
 </document>

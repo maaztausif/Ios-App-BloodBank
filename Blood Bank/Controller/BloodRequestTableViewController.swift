@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import NVActivityIndicatorView
 
-class BloodRequestTableViewController: UITableViewController {
+class BloodRequestTableViewController: UITableViewController ,NVActivityIndicatorViewable{
     var request_Array = [Requests]()
 
     @IBOutlet var requestTableView: UITableView!
@@ -56,7 +57,7 @@ class BloodRequestTableViewController: UITableViewController {
         cell.lbl_RequestFor.text = request_Array[indexPath.row].request_For
         cell.lbl_Location.text = request_Array[indexPath.row].location
         cell.txt_PhoneNo.text = request_Array[indexPath.row].phoneNo
-
+        cell.phone_No = request_Array[indexPath.row].phoneNo
         return cell
     }
     
@@ -78,6 +79,12 @@ class BloodRequestTableViewController: UITableViewController {
             self.configureTableView()
             self.requestTableView.reloadData()
         }
+    }
+    
+    func progressLoading(){
+        let size = CGSize(width: 100, height: 100)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)
+        
     }
  
 

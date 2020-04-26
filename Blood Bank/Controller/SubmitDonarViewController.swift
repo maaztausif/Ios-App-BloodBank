@@ -9,11 +9,14 @@
 import UIKit
 import TextFieldEffects
 import Firebase
+import NVActivityIndicatorView
 
-class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
+class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,NVActivityIndicatorViewable {
 
     var currentTextField : Int!
     let pickerView = UIPickerView()
+    var currentTextFieldName : UITextField!
+
     
     @IBOutlet var txt_Name: HoshiTextField!
     @IBOutlet var txt_Gender: HoshiTextField!
@@ -31,14 +34,41 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         txt_Gender.delegate = self
         txt_BloodType.delegate = self
         txt_LastBloodDonate.delegate =  self
+        
+        
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        txt_Gender.inputAccessoryView = toolBar
+        txt_BloodType.inputAccessoryView = toolBar
+        txt_LastBloodDonate.inputAccessoryView = toolBar
 
     }
+    
+
+    @objc func donePicker() {
+        currentTextFieldName.resignFirstResponder()
+    }
+    
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         pickerView.delegate = self
         pickerView.dataSource = self
         currentTextField = textField.tag
         textField.inputView = pickerView
+        currentTextFieldName = textField
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -77,23 +107,42 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
     }
 
     @IBAction func submitDonation(_ sender: Any) {
-        
         if txt_Name.text == "" || txt_Gender.text == "" || txt_BloodType.text == ""  || txt_LastBloodDonate.text == "" {
+            
+            let alert = UIAlertController(title: "Some Empty Field", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                
+            }
+            alert.addAction(action)
+            present(alert,animated: true,completion: nil)
             
         }else{
             let donarDB = Database.database().reference().child("Donar List")
             let donarDic = ["Name":txt_Name.text!,"Gender":txt_Gender.text!,"Blood Type":txt_BloodType.text!,"Last Blood Donate":txt_LastBloodDonate.text!]
             
             donarDB.childByAutoId().setValue(donarDic) { (error, refrence) in
-                if error != nil{
+                if error != nil{         
                     print("Error In Saving database======================================Donar database")
                 }else{
                     print("Complete Saving database======================================Donar database")
                     
+                    let alert = UIAlertController(title: "Saved Successful", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                        
+                    }
+                    alert.addAction(action)
+                    self.present(alert,animated: true,completion: nil)
                 }
             }
         }
         
 
     }
+    
+    func progressLoading(){
+        let size = CGSize(width: 100, height: 100)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)
+        
+    }
+
 }

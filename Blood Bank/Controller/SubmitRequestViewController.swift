@@ -9,8 +9,9 @@
 import UIKit
 import TextFieldEffects
 import Firebase
+import NVActivityIndicatorView
 
-class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate{
+class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NVActivityIndicatorViewable{
 
     let pickerView = UIPickerView()
     var currentTextField: Int?
@@ -32,8 +33,35 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         txt_BloodType.delegate = self
         txt_Location.delegate = self
         txt_RequestFor.delegate = self
+        
+        
+        
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.donePicker))
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        txt_BloodType.inputAccessoryView = toolBar
+        txt_Location.inputAccessoryView = toolBar
+        txt_RequestFor.inputAccessoryView = toolBar
+
 
     }
+    
+    
+    @objc func donePicker() {
+        currentTextFieldName.resignFirstResponder()
+    }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         pickerView.delegate = self
@@ -41,6 +69,7 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         currentTextField = textField.tag
         currentTextFieldName = textField
         textField.inputView = pickerView
+        currentTextFieldName = textField
     }
     
 
@@ -90,8 +119,12 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         
         if txt_Name.text == "" || txt_RequestFor.text == "" || txt_Location.text == "" || txt_PhoneNo.text == "" || txt_BloodType.text == "" {
             
-            
-
+            let alert = UIAlertController(title: "Some Empty Field", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                
+            }
+            alert.addAction(action)
+            present(alert,animated: true,completion: nil)
         
         }else{
             
@@ -108,12 +141,25 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
                     print("saving database error=================================================")
                 }else{
                     print("datbase saving complete in firebase====================================")
+                    
+                    let alert = UIAlertController(title: "Saved Successful", message: "", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                        
+                    }
+                    alert.addAction(action)
+                    self.present(alert,animated: true,completion: nil)
                 }
                 
             }
             
         }
     
+    }
+    
+    func progressLoading(){
+        let size = CGSize(width: 100, height: 100)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)
+        
     }
     
 }

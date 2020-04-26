@@ -15,6 +15,7 @@ class DonarListTableViewCell: UITableViewCell {
     @IBOutlet var lbl_BloodType: UILabel!
     @IBOutlet var lbl_LastBloodDonate: UILabel!
     
+    let phone_No = ""
     
     
     
@@ -29,4 +30,8 @@ class DonarListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func btn_Call(_ sender: Any) {
+        if let url = NSURL(string: "tel://\(phone_No)"), UIApplication.shared.canOpenURL(url as URL) {
+            UIApplication.shared.openURL(url as URL)    }
+    }
 }

@@ -150,6 +150,9 @@
                                 <state key="normal" title="Chat">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btn_call:" destination="Vxa-ny-ZL2" eventType="touchUpInside" id="oMl-Ya-fDE"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Oe-J9o">
                                 <rect key="frame" x="232" y="460" width="114" height="78"/>

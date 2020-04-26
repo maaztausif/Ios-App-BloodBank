@@ -9,8 +9,10 @@
 import UIKit
 import TextFieldEffects
 import Firebase
+import NVActivityIndicatorView
 
-class SignUpViewController: UIViewController {
+
+class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
     
     @IBOutlet var txt_Email: HoshiTextField!
     
@@ -24,19 +26,72 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUp_btn(_ sender: Any) {
-        Auth.auth().createUser(withEmail: txt_Email.text!, password: txt_Password.text!) { (user, error) in
-            if error != nil{
-                print("error creating user======================================")
-            }else{
-                print("creature suer Succesful==================================")
-                self.performSegue(withIdentifier: "goToInfo", sender: self)
-
+        
+        if txt_Email.text == "" || txt_Password.text == ""{
+            
+            let alert = UIAlertController(title: "Some Empty Field", message: "", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                
             }
+            alert.addAction(action)
+            present(alert,animated: true,completion: nil)
+            
+            
+        }else{
+            progressLoading()
+            
+            Auth.auth().createUser(withEmail: txt_Email.text!, password: txt_Password.text!) { (user, error) in
+                if error != nil{
+                    print("error creating user======================================")
+                    self.stopAnimating()
+                    
+                    
+                    let alert = UIAlertController(title: "Some Empty Field", message: "\(error)", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                        
+                    }
+                    alert.addAction(action)
+                    self.present(alert,animated: true,completion: nil)
+                    
+                    
+                }else{
+                    print("creature suer Succesful==================================")           
+                    let db = Database.database().reference().child("All Users")
+                    let userID = Auth.auth().currentUser?.uid ?? "error"
+                    
+                    db.childByAutoId().setValue(userID) { (error, refrence) in
+                        if error != nil{
+                            print("Error In Saving database======================================Donar database")
+                        }else{
+                            print("Complete Saving database======================================Donar database")
+                            
+                        }
+                    }
+                    
+                    self.stopAnimating()
+                    self.performSegue(withIdentifier: "goToInfo", sender: self)
+                    
+                }
+            }
+            
         }
+
     }
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! InfoViewController
         vc.user_Id = txt_Email.text! 
+    }
+    
+    
+    
+    func progressLoading(){
+        let size = CGSize(width: 100, height: 100)
+        startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)
+        
     }
     
 }

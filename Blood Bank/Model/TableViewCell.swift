@@ -16,6 +16,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var lbl_Location: UILabel!
     @IBOutlet var txt_PhoneNo: UILabel!
     
+    var phone_No = ""
     
 
     override func awakeFromNib() {
@@ -29,5 +30,10 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func btn_Call(_ sender: Any) {
+        if let url = NSURL(string: "tel://\(phone_No)"), UIApplication.shared.canOpenURL(url as URL) {
+            UIApplication.shared.openURL(url as URL)
+    }
     
+  }
 }

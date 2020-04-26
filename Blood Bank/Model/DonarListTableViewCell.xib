@@ -51,6 +51,9 @@
                         <rect key="frame" x="351" y="6" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Call"/>
+                        <connections>
+                            <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0j2-BI-n4B"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i52-Ni-jAW">
                         <rect key="frame" x="350" y="95" width="33" height="30"/>
@@ -94,7 +97,7 @@
                 <outlet property="lbl_LastBloodDonate" destination="PCj-Rr-sbh" id="t2Q-C6-WCK"/>
                 <outlet property="lbl_name" destination="vHx-YA-thW" id="bsh-df-ja4"/>
             </connections>
-            <point key="canvasLocation" x="34.782608695652179" y="83.705357142857139"/>
+            <point key="canvasLocation" x="-258" y="61"/>
         </tableViewCell>
     </objects>
 </document>
