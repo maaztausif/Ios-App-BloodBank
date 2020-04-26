@@ -14,8 +14,9 @@ class DonarListTableViewCell: UITableViewCell {
     @IBOutlet var lbl_Gender: UILabel!
     @IBOutlet var lbl_BloodType: UILabel!
     @IBOutlet var lbl_LastBloodDonate: UILabel!
+    @IBOutlet var txt_phoneNo: UILabel!
     
-    let phone_No = ""
+    var phone_No = ""
     
     
     

@@ -13,4 +13,5 @@ class Donar{
     var gender = ""
     var blooadType = ""
     var lastBloodDonate = ""
+    var phoneNo = ""
 }

@@ -27,7 +27,7 @@ class DonarListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0;//Choose your custom row height
+        return 175.0;//Choose your custom row height
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -43,7 +43,8 @@ class DonarListTableViewController: UITableViewController {
         cell.lbl_BloodType.text = donarListArray[indexPath.row].blooadType
         cell.lbl_Gender.text = donarListArray[indexPath.row].gender
         cell.lbl_LastBloodDonate.text = donarListArray[indexPath.row].lastBloodDonate
-
+        cell.txt_phoneNo.text = donarListArray[indexPath.row].phoneNo
+        cell.phone_No = donarListArray[indexPath.row].phoneNo
         return cell
     }
  
@@ -60,13 +61,15 @@ class DonarListTableViewController: UITableViewController {
         let user_Donar = Donar()
         let donarDB = Database.database().reference().child("Donar List")
         donarDB.observe(.childAdded) { (Snapshot) in
+            print(Snapshot)
             let snapshotValue = Snapshot.value as! Dictionary<String,String>
             user_Donar.name = snapshotValue["Name"]!
             user_Donar.gender = snapshotValue["Gender"]!
             user_Donar.blooadType = snapshotValue["Blood Type"]!
             user_Donar.lastBloodDonate = snapshotValue["Last Blood Donate"]!
-            
+            user_Donar.phoneNo = snapshotValue["Phone No"]!
             self.donarListArray.append(user_Donar)
+            print("\(user_Donar.name)=========================================")
             self.donarTableView.reloadData()
         }
     }

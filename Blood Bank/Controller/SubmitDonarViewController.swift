@@ -22,6 +22,7 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
     @IBOutlet var txt_Gender: HoshiTextField!
     @IBOutlet var txt_BloodType: HoshiTextField!
     @IBOutlet var txt_LastBloodDonate: HoshiTextField!
+    @IBOutlet var txt_phoneNo: HoshiTextField!
     
     let bloodTypes = ["","A+","A-","O+","O-","B+","B-","AB+","AB-"]
     let gender = ["","Male","Female","Unspecified"]
@@ -107,7 +108,7 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
     }
 
     @IBAction func submitDonation(_ sender: Any) {
-        if txt_Name.text == "" || txt_Gender.text == "" || txt_BloodType.text == ""  || txt_LastBloodDonate.text == "" {
+        if txt_Name.text == "" || txt_Gender.text == "" || txt_BloodType.text == ""  || txt_LastBloodDonate.text == "" || txt_phoneNo.text == ""{
             
             let alert = UIAlertController(title: "Some Empty Field", message: "", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
@@ -118,7 +119,7 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
             
         }else{
             let donarDB = Database.database().reference().child("Donar List")
-            let donarDic = ["Name":txt_Name.text!,"Gender":txt_Gender.text!,"Blood Type":txt_BloodType.text!,"Last Blood Donate":txt_LastBloodDonate.text!]
+            let donarDic = ["Name":txt_Name.text!,"Gender":txt_Gender.text!,"Blood Type":txt_BloodType.text!,"Last Blood Donate":txt_LastBloodDonate.text!,"Phone No":txt_phoneNo.text!]
             
             donarDB.childByAutoId().setValue(donarDic) { (error, refrence) in
                 if error != nil{         

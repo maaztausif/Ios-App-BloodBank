@@ -51,6 +51,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell", for: indexPath) as! TableViewCell
         cell.lbl_Name.text = request_Array[indexPath.row].name
         cell.lbl_BloodType.text = request_Array[indexPath.row].blood_Type

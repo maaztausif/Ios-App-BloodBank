@@ -879,6 +879,21 @@
                                     <action selector="submitDonation:" destination="qlm-ct-vvm" eventType="touchUpInside" id="TPe-2W-0kQ"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone No" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GHE-Pg-hJb" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="36" y="511" width="282" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="AYQ-BF-7D7"/>
@@ -888,6 +903,7 @@
                         <outlet property="txt_Gender" destination="hFJ-fY-TEu" id="mwS-Jm-ApN"/>
                         <outlet property="txt_LastBloodDonate" destination="sL0-fe-CQG" id="iqK-D5-0Jn"/>
                         <outlet property="txt_Name" destination="mjF-kL-BwC" id="T9u-ec-RyA"/>
+                        <outlet property="txt_phoneNo" destination="GHE-Pg-hJb" id="IvR-7b-Zwn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8PO-jE-Ke0" userLabel="First Responder" sceneMemberID="firstResponder"/>
