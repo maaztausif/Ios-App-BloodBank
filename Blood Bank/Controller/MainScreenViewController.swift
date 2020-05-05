@@ -8,6 +8,7 @@
 
 import UIKit
 import ChameleonFramework
+import Firebase
 
 class MainScreenViewController: UIViewController {
     
@@ -32,6 +33,18 @@ class MainScreenViewController: UIViewController {
   
 
         
+    }
+    
+    @IBAction func btn_signout(_ sender: Any) {
+        
+        let signOut = Auth.auth()
+        do {
+            try signOut.signOut()
+        } catch let signOutError as NSError {
+            print("SignOut error======================")
+        }
+        
+        navigationController?.popToRootViewController(animated: true)
     }
     
     }

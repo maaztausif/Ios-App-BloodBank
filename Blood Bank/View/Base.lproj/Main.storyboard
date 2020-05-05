@@ -175,6 +175,14 @@
                                     <segue destination="bHy-zy-dOw" kind="show" identifier="goToUserInfo" id="TLM-C3-PPM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eCx-45-pER">
+                                <rect key="frame" x="150" y="622" width="114" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="SignOut"/>
+                                <connections>
+                                    <action selector="btn_signout:" destination="Vxa-ny-ZL2" eventType="touchUpInside" id="N3k-JJ-Yer"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="pMf-WQ-vNX"/>
@@ -188,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPL-66-PXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3299" y="374"/>
+            <point key="canvasLocation" x="3298.5507246376815" y="373.66071428571428"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="RPM-CI-9Id">
@@ -934,6 +942,6 @@
         <image name="signUp" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gxR-5n-mgB"/>
+        <segue reference="MkG-Of-rbc"/>
     </inferredMetricsTieBreakers>
 </document>
