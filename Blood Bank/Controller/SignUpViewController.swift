@@ -19,6 +19,9 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
     @IBOutlet var txt_Password: HoshiTextField!
     
     @IBOutlet var btn_signUp: UIButton!
+    
+    @IBOutlet var txt_Name: HoshiTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.flatCoffee()
@@ -60,8 +63,9 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
                     print("creature suer Succesful==================================")           
                     let db = Database.database().reference().child("All Users")
                     let userID = Auth.auth().currentUser?.uid ?? "error"
+                    let userDic = ["userID":"\(userID)"]
                     
-                    db.childByAutoId().setValue(userID) { (error, refrence) in
+                    db.childByAutoId().setValue(userDic) { (error, refrence) in
                         if error != nil{
                             print("Error In Saving database======================================Donar database")
                         }else{

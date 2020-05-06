@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B7383DB900C7473A15B4EF29 /* Pods_Blood_Bank.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2C6ECA10307525D8D29E6C /* Pods_Blood_Bank.framework */; };
+		C5172241246237C300BA14A8 /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5172240246237C300BA14A8 /* ChatTableViewController.swift */; };
 		C553B4FE244F9CB800208E36 /* SubmitDonarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553B4FD244F9CB800208E36 /* SubmitDonarViewController.swift */; };
 		C553B500244F9DA900208E36 /* DonarListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C553B4FF244F9DA900208E36 /* DonarListTableViewController.swift */; };
 		C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55602DA243E23150012AAC8 /* AppDelegate.swift */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		70489B65F6582FEAAD27BB3A /* Pods-Blood Bank.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blood Bank.debug.xcconfig"; path = "Target Support Files/Pods-Blood Bank/Pods-Blood Bank.debug.xcconfig"; sourceTree = "<group>"; };
+		C5172240246237C300BA14A8 /* ChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		C553B4FD244F9CB800208E36 /* SubmitDonarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitDonarViewController.swift; sourceTree = "<group>"; };
 		C553B4FF244F9DA900208E36 /* DonarListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonarListTableViewController.swift; sourceTree = "<group>"; };
 		C55602D7243E23150012AAC8 /* Blood Bank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blood Bank.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 				C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */,
 				C553B4FD244F9CB800208E36 /* SubmitDonarViewController.swift */,
 				C553B4FF244F9DA900208E36 /* DonarListTableViewController.swift */,
+				C5172240246237C300BA14A8 /* ChatTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */,
 				C57DEBDC244103C1005A7EBE /* InfoViewController.swift in Sources */,
 				C553B500244F9DA900208E36 /* DonarListTableViewController.swift in Sources */,
+				C5172241246237C300BA14A8 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

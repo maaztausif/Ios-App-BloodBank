@@ -96,6 +96,21 @@
                                     <action selector="signUp_btn:" destination="FfI-cW-elL" eventType="touchUpInside" id="bLn-uA-B06"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZVz-Zb-kjy" customClass="HoshiTextField" customModule="TextFieldEffects">
+                                <rect key="frame" x="54" y="212" width="282" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderActiveColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="2oC-ig-sJB"/>
@@ -104,6 +119,7 @@
                     <connections>
                         <outlet property="btn_signUp" destination="lGy-ev-jt0" id="UtY-km-sOR"/>
                         <outlet property="txt_Email" destination="tuY-Pt-d6R" id="y2T-fL-fNJ"/>
+                        <outlet property="txt_Name" destination="ZVz-Zb-kjy" id="mPg-A1-bYn"/>
                         <outlet property="txt_Password" destination="ITO-IW-z9X" id="Wj2-0i-ypr"/>
                         <segue destination="oXR-oN-b6O" kind="show" identifier="goToInfo" id="T9O-w5-u5m"/>
                     </connections>
@@ -111,6 +127,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndI-96-nv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1944.9275362318842" y="-372.32142857142856"/>
+        </scene>
+        <!--Chat Table View Controller-->
+        <scene sceneID="cvO-bc-H2J">
+            <objects>
+                <tableViewController id="9S2-RE-r4l" customClass="ChatTableViewController" customModule="Blood_Bank" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f2j-pn-3uX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="eWr-qk-0Oi">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eWr-qk-0Oi" id="kXR-Cs-YDo">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9S2-RE-r4l" id="eDC-qF-xnw"/>
+                            <outlet property="delegate" destination="9S2-RE-r4l" id="4hY-Dx-sEl"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tableViewChat" destination="f2j-pn-3uX" id="IV0-Jz-Xn1"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trx-fY-k91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2501" y="1109"/>
         </scene>
         <!--Main Screen View Controller-->
         <scene sceneID="Vqp-Yj-geC">
@@ -151,6 +198,7 @@
                                 </state>
                                 <connections>
                                     <action selector="btn_call:" destination="Vxa-ny-ZL2" eventType="touchUpInside" id="oMl-Ya-fDE"/>
+                                    <segue destination="9S2-RE-r4l" kind="show" id="zZf-Ut-KQf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Oe-J9o">
