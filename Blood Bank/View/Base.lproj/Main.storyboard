@@ -153,6 +153,7 @@
                     </tableView>
                     <connections>
                         <outlet property="tableViewChat" destination="f2j-pn-3uX" id="IV0-Jz-Xn1"/>
+                        <segue destination="lH4-3u-ZT4" kind="show" identifier="gotoChat" id="37M-s6-Rbl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trx-fY-k91" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -274,6 +275,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8m-yb-mv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4356.521739130435" y="373.66071428571428"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="gtM-w2-Mas">
+            <objects>
+                <viewController id="lH4-3u-ZT4" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j61-64-5rg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-jm-9RP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="674"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TDH-tj-lXw">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TDH-tj-lXw" id="fDE-cV-RYB">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yC9-HR-Qlu"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hcV-L1-j03" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3301.449275362319" y="1110.9375"/>
         </scene>
         <!--Request-->
         <scene sceneID="r37-Mk-1ja">

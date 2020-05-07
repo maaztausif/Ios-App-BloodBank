@@ -42,6 +42,18 @@ class ChatTableViewController: UITableViewController {
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let name = userNamesArray[indexPath.row]
+        let userID = Auth.auth().currentUser?.uid ?? "error"
+        let database = Database.database().reference().child("user: \(userID)").child("\(name)")
+        database.childByAutoId().setValue("") { (error, refrence) in
+            
+            if error != nil{
+                print("error in saving")
+            }else{
+                print("No error")
+            }
+        }
 
     }
 
