@@ -27,6 +27,8 @@
 		C56F330124507DB700E9DEF3 /* DonarList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F330024507DB700E9DEF3 /* DonarList.swift */; };
 		C56F330424507E1800E9DEF3 /* DonarListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F330224507E1800E9DEF3 /* DonarListTableViewCell.swift */; };
 		C56F330524507E1800E9DEF3 /* DonarListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56F330324507E1800E9DEF3 /* DonarListTableViewCell.xib */; };
+		C572BC6824638F5900AF0DE8 /* UserNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C572BC6624638F5900AF0DE8 /* UserNameTableViewCell.swift */; };
+		C572BC6924638F5900AF0DE8 /* UserNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C572BC6724638F5900AF0DE8 /* UserNameTableViewCell.xib */; };
 		C57DEBDC244103C1005A7EBE /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57DEBDB244103C1005A7EBE /* InfoViewController.swift */; };
 		C5CB56AF244DFD2E00F3D81A /* BloodRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB56AE244DFD2E00F3D81A /* BloodRequestTableViewController.swift */; };
 		C5CB56B1244DFD7300F3D81A /* SubmitRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */; };
@@ -55,6 +57,8 @@
 		C56F330024507DB700E9DEF3 /* DonarList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonarList.swift; sourceTree = "<group>"; };
 		C56F330224507E1800E9DEF3 /* DonarListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonarListTableViewCell.swift; sourceTree = "<group>"; };
 		C56F330324507E1800E9DEF3 /* DonarListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DonarListTableViewCell.xib; sourceTree = "<group>"; };
+		C572BC6624638F5900AF0DE8 /* UserNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNameTableViewCell.swift; sourceTree = "<group>"; };
+		C572BC6724638F5900AF0DE8 /* UserNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserNameTableViewCell.xib; sourceTree = "<group>"; };
 		C57DEBDB244103C1005A7EBE /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		C5CB56AE244DFD2E00F3D81A /* BloodRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodRequestTableViewController.swift; sourceTree = "<group>"; };
 		C5CB56B0244DFD7300F3D81A /* SubmitRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitRequestViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				C56F330024507DB700E9DEF3 /* DonarList.swift */,
 				C56F330224507E1800E9DEF3 /* DonarListTableViewCell.swift */,
 				C56F330324507E1800E9DEF3 /* DonarListTableViewCell.xib */,
+				C572BC6624638F5900AF0DE8 /* UserNameTableViewCell.swift */,
+				C572BC6724638F5900AF0DE8 /* UserNameTableViewCell.xib */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -234,6 +240,7 @@
 				C55602E5243E231C0012AAC8 /* LaunchScreen.storyboard in Resources */,
 				C56C9790244F1644006D44C9 /* TableViewCell.xib in Resources */,
 				C56F330524507E1800E9DEF3 /* DonarListTableViewCell.xib in Resources */,
+				C572BC6924638F5900AF0DE8 /* UserNameTableViewCell.xib in Resources */,
 				C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */,
 				C558722F2455BE42008B8806 /* Assets.xcassets in Resources */,
 				C55602E0243E23150012AAC8 /* Main.storyboard in Resources */,
@@ -304,6 +311,7 @@
 				C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */,
 				C57DEBDC244103C1005A7EBE /* InfoViewController.swift in Sources */,
 				C553B500244F9DA900208E36 /* DonarListTableViewController.swift in Sources */,
+				C572BC6824638F5900AF0DE8 /* UserNameTableViewCell.swift in Sources */,
 				C5172241246237C300BA14A8 /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
