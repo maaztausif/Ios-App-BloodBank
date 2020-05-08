@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     
     
@@ -29,8 +29,9 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableViewMsg.delegate = self
-        
+        tableViewMsg.delegate = self
+        tableViewMsg.dataSource = self
+        retrieveMsg()
         
         print("user name = \(currentUserName)")
         print("other user name = \(otherUserName)")
@@ -41,6 +42,7 @@ class ChatViewController: UIViewController {
         tableViewMsg.register(UINib(nibName: "MsgChatTableViewCell",bundle: nil), forCellReuseIdentifier: "msgChat")
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("\(msgArray.count)===========================")
         return msgArray.count
     }
 
@@ -50,6 +52,10 @@ class ChatViewController: UIViewController {
         cell.lbl_name.text = msgArray[indexPath.row].sender
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 86.0
     }
     
     @IBAction func msgSend(_ sender: Any) {
@@ -74,7 +80,7 @@ class ChatViewController: UIViewController {
                         print("No error")
                     }
                 }
-        
+        txt_msg.text = ""
     }
     
     func retrieveMsg() {
@@ -89,7 +95,8 @@ class ChatViewController: UIViewController {
             self.msgArray.append(msgs)
             self.tableViewMsg.reloadData()
         }
-        
+        self.tableViewMsg.reloadData()
+
     }
     
 
