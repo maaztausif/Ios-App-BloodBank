@@ -16,6 +16,7 @@ class MainScreenViewController: UIViewController {
     @IBOutlet var btn_BloodInfo: UIButton!
     @IBOutlet var btn_bloodRequest: UIButton!
     @IBOutlet var btn_donarRequest: UIButton!
+    @IBOutlet var btn_Chat: UIButton!
     
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class MainScreenViewController: UIViewController {
         btn_bloodRequest.backgroundColor = UIColor.flatCoffee()
         btn_donarRequest.backgroundColor = UIColor.flatCoffee()
         btn_BloodInfo.backgroundColor = UIColor.flatCoffee()
+        btn_Chat.backgroundColor = UIColor.flatCoffee()
         
 
     }

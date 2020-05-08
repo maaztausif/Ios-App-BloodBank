@@ -48,10 +48,23 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableViewMsg.dequeueReusableCell(withIdentifier: "msgChat", for: indexPath) as! MsgChatTableViewCell
-        cell.lbl_msg.text = msgArray[indexPath.row].msg
-        cell.lbl_name.text = msgArray[indexPath.row].sender
+        if msgArray[indexPath.row].sender == currentUserName{
+            cell.lbl_msg.text = msgArray[indexPath.row].msg
+            cell.lbl_name.text = msgArray[indexPath.row].sender
+            cell.userImage.image = UIImage(named: "egg")
+            cell.backgroundColor =  UIColor.flatSand()
+            cell.msgView.backgroundColor = UIColor.flatCoffee()
+            return cell
+        }else{
+            cell.lbl_msg.text = msgArray[indexPath.row].msg
+            cell.lbl_name.text = msgArray[indexPath.row].sender
+            cell.userImage.image = UIImage(named: "egg")
+            cell.backgroundColor = UIColor.flatCoffee()
+            cell.msgView.backgroundColor = UIColor.flatSand()
 
-        return cell
+            return cell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

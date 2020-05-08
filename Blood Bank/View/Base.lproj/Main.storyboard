@@ -238,6 +238,7 @@
                     </view>
                     <connections>
                         <outlet property="btn_BloodInfo" destination="wj0-Oe-J9o" id="yGs-ak-IzU"/>
+                        <outlet property="btn_Chat" destination="EFS-zT-A0s" id="phh-Mh-TUN"/>
                         <outlet property="btn_UserInfo" destination="U1x-uv-nEK" id="VgQ-PC-cK3"/>
                         <outlet property="btn_bloodRequest" destination="kx8-Nj-qew" id="eVk-8M-Dyp"/>
                         <outlet property="btn_donarRequest" destination="i7h-xP-MqP" id="Sma-c0-9eQ"/>

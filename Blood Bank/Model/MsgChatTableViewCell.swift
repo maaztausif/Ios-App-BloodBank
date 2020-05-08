@@ -12,6 +12,8 @@ class MsgChatTableViewCell: UITableViewCell {
     
     @IBOutlet var lbl_name: UILabel!
     @IBOutlet var lbl_msg: UILabel!
+    @IBOutlet var userImage: UIImageView!
+    @IBOutlet var msgView: UIView!
     
     
     override func awakeFromNib() {

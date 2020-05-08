@@ -114,7 +114,7 @@ class ChatTableViewController: UITableViewController {
                         self.dic[name] = user_ID1
                         self.userNamesArray.append(name)
                         print("users dictionary : \(self.dic)==========================")
-
+                        self.tableViewChat.reloadData()
                     }
                 }
                 
