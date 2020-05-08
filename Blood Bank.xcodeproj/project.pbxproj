@@ -18,6 +18,9 @@
 		C558722F2455BE42008B8806 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C558722E2455BE42008B8806 /* Assets.xcassets */; };
 		C55EC87E2440D4BE004CF8BA /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EC87D2440D4BE004CF8BA /* SignUpViewController.swift */; };
 		C55EC8802440D7B3004CF8BA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C55EC87F2440D7B3004CF8BA /* SignInViewController.swift */; };
+		C56258F12464CA7D00881AE7 /* MsgChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56258EF2464CA7D00881AE7 /* MsgChatTableViewCell.swift */; };
+		C56258F22464CA7D00881AE7 /* MsgChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C56258F02464CA7D00881AE7 /* MsgChatTableViewCell.xib */; };
+		C56258F42464D2E100881AE7 /* UserMsg.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56258F32464D2E100881AE7 /* UserMsg.swift */; };
 		C56A522C244A6FB200781525 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A522B244A6FB200781525 /* UserInfoViewController.swift */; };
 		C56A522E244A764E00781525 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56A522D244A764E00781525 /* MainScreenViewController.swift */; };
 		C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C56BBF982445F31F0046C7FA /* GoogleService-Info.plist */; };
@@ -49,6 +52,9 @@
 		C558722E2455BE42008B8806 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../todoey/todoey/supporting files/Assets.xcassets"; sourceTree = "<group>"; };
 		C55EC87D2440D4BE004CF8BA /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C55EC87F2440D7B3004CF8BA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		C56258EF2464CA7D00881AE7 /* MsgChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgChatTableViewCell.swift; sourceTree = "<group>"; };
+		C56258F02464CA7D00881AE7 /* MsgChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MsgChatTableViewCell.xib; sourceTree = "<group>"; };
+		C56258F32464D2E100881AE7 /* UserMsg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMsg.swift; sourceTree = "<group>"; };
 		C56A522B244A6FB200781525 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C56A522D244A764E00781525 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		C56BBF982445F31F0046C7FA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -131,6 +137,9 @@
 				C56F330324507E1800E9DEF3 /* DonarListTableViewCell.xib */,
 				C572BC6624638F5900AF0DE8 /* UserNameTableViewCell.swift */,
 				C572BC6724638F5900AF0DE8 /* UserNameTableViewCell.xib */,
+				C56258EF2464CA7D00881AE7 /* MsgChatTableViewCell.swift */,
+				C56258F02464CA7D00881AE7 /* MsgChatTableViewCell.xib */,
+				C56258F32464D2E100881AE7 /* UserMsg.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -243,6 +252,7 @@
 				C55602E5243E231C0012AAC8 /* LaunchScreen.storyboard in Resources */,
 				C56C9790244F1644006D44C9 /* TableViewCell.xib in Resources */,
 				C56F330524507E1800E9DEF3 /* DonarListTableViewCell.xib in Resources */,
+				C56258F22464CA7D00881AE7 /* MsgChatTableViewCell.xib in Resources */,
 				C572BC6924638F5900AF0DE8 /* UserNameTableViewCell.xib in Resources */,
 				C56BBF992445F31F0046C7FA /* GoogleService-Info.plist in Resources */,
 				C558722F2455BE42008B8806 /* Assets.xcassets in Resources */,
@@ -309,7 +319,9 @@
 				C56C978F244F1644006D44C9 /* TableViewCell.swift in Sources */,
 				C553B4FE244F9CB800208E36 /* SubmitDonarViewController.swift in Sources */,
 				C55EC87E2440D4BE004CF8BA /* SignUpViewController.swift in Sources */,
+				C56258F42464D2E100881AE7 /* UserMsg.swift in Sources */,
 				C56F330424507E1800E9DEF3 /* DonarListTableViewCell.swift in Sources */,
+				C56258F12464CA7D00881AE7 /* MsgChatTableViewCell.swift in Sources */,
 				C55602DD243E23150012AAC8 /* ViewController.swift in Sources */,
 				C55602DB243E23150012AAC8 /* AppDelegate.swift in Sources */,
 				C57DEBDC244103C1005A7EBE /* InfoViewController.swift in Sources */,

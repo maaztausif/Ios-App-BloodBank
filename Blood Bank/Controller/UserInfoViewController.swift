@@ -42,6 +42,9 @@ class UserInfoViewController: UIViewController {
         let userDatabase = Database.database().reference().child("user: \(userID)")
         userDatabase.observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String,String>
+            
+            print(snapshot)
+            
             self.txt_Name.text = snapshotValue["Name"]!
             self.txt_PhoneNo.text = snapshotValue["Phone No"]!
             self.txt_Email.text = snapshotValue["Email"]!
