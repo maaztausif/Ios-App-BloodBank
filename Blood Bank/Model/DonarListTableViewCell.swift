@@ -17,12 +17,23 @@ class DonarListTableViewCell: UITableViewCell {
     @IBOutlet var txt_phoneNo: UILabel!
     
     var phone_No = ""
+    var currentUserName = ""
+    var userID = ""
+    var otherUserID = ""
+    var OtherUserName = ""
     
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+//        print(currentUserName)
+//        print(userID)
+//        print(otherUserID)
+//        print(OtherUserName)
+
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -35,4 +46,13 @@ class DonarListTableViewCell: UITableViewCell {
         if let url = NSURL(string: "tel://\(phone_No)"), UIApplication.shared.canOpenURL(url as URL) {
             UIApplication.shared.openURL(url as URL)    }
     }
+    
+    @IBAction func btn_Chat(_ sender: Any) {
+        
+        print(currentUserName)
+        print("(\(userID)===========")
+        print("\(otherUserID)=============")
+        print("\(OtherUserName)============")
+    }
+    
 }

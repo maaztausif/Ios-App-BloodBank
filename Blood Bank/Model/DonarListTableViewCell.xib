@@ -90,13 +90,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-Cq-I8G">
-                        <rect key="frame" x="352" y="61" width="30" height="30"/>
+                        <rect key="frame" x="352" y="28" width="30" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Call">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
                             <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="0j2-BI-n4B"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJg-vX-joz">
+                        <rect key="frame" x="352" y="95" width="33" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Chat">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btn_Chat:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dfB-EM-7lp"/>
                         </connections>
                     </button>
                 </subviews>
@@ -109,7 +119,7 @@
                 <outlet property="lbl_name" destination="vHx-YA-thW" id="bsh-df-ja4"/>
                 <outlet property="txt_phoneNo" destination="Tno-73-ebr" id="i3F-DC-Ls3"/>
             </connections>
-            <point key="canvasLocation" x="-257.97101449275362" y="70.647321428571431"/>
+            <point key="canvasLocation" x="-438" y="71"/>
         </tableViewCell>
     </objects>
 </document>

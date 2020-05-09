@@ -16,12 +16,23 @@ class DonarListTableViewController: UITableViewController {
     
     
     var donarListArray = [Donar]()
+
     var color : String!
+    var dic = [String:String]()
+
+    
+    var currentUserName = ""
+    var userID = ""
+    var otherUserName = ""
+    var otherUserID = ""
+    var userNamesArray = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        userID = Auth.auth().currentUser?.uid ?? "error"
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
         retrieveDonarLis()
+        getNameCurrentUser()
         tableView.separatorStyle = .none
 
         
@@ -34,8 +45,7 @@ class DonarListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-         return donarListArray.count
+        return donarListArray.count
     }
 
     
@@ -48,6 +58,26 @@ class DonarListTableViewController: UITableViewController {
         cell.lbl_LastBloodDonate.text = donarListArray[indexPath.row].lastBloodDonate
         cell.txt_phoneNo.text = donarListArray[indexPath.row].phoneNo
         cell.phone_No = donarListArray[indexPath.row].phoneNo
+        
+        
+        cell.currentUserName = currentUserName
+        print("\(currentUserName)==================for name")
+
+        cell.userID = userID
+        cell.OtherUserName = donarListArray[indexPath.row].name
+        print("\(donarListArray[indexPath.row].name)==================In cell")
+        otherUserName = donarListArray[indexPath.row].name
+
+        print("\(otherUserName)==================In cell 2 2 2")
+
+        
+        if let name = dic["ali"]{
+            cell.otherUserID = name
+            print("\(name)==================In cell 2 2 2")
+        }else{
+            print("nai chala bhai ===========================")
+        }
+        
     //cell.backgroundColor = UIColor(hexString: "1D9BF6")
 
         let colorName = UIColor(hexString: color )
@@ -59,20 +89,43 @@ class DonarListTableViewController: UITableViewController {
 
 
         return cell
-        
-        
-        
-        
     }
- 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        donarTableView.reloadData()
+    }
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func retrieveData(){
+        let database = Database.database().reference().child("All Users")
+        
+        database.observe(.childAdded) { (Snapshot) in
+            print(Snapshot)
+            let snapshotValue = Snapshot.value as! Dictionary<String,String>
+            let user_ID1 = snapshotValue["userID"]!
+            let userNameDB = database.database.reference().child("user: \(user_ID1)")
+            userNameDB.observe(.childAdded, with: { (userSnapShot) in
+                let userSnapshotValue = userSnapShot.value as! Dictionary<String,String>
+                if let name = userSnapshotValue["Name"] {
+                    if self.currentUserName == name{
+                    }else{
+                        self.dic[name] = user_ID1
+                        self.userNamesArray.append(name)
+                        print("users dictionary : \(self.dic)==========================")
+                    }
+                }
+                
+                print(self.userNamesArray)
+                
+            })
+            
+            
+            
+            
+        }
+        
     }
-    */
+    
 
     func retrieveDonarLis(){
         let donarDB = Database.database().reference().child("Donar List")
@@ -92,5 +145,24 @@ class DonarListTableViewController: UITableViewController {
         }
     }
     
+
+    
+    func getNameCurrentUser(){
+        retrieveData()
+        let userID = Auth.auth().currentUser?.uid ?? "error"
+        let db = Database.database().reference().child("user: \(userID)")
+        db.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
+            print(snapshot)
+            if let currentName = snapshotValue["Name"]{
+                self.currentUserName = currentName
+                print(" this is current user name : \(self.currentUserName)=======================")
+                
+            }
+            
+        }
+        
+    }
+
 
 }
