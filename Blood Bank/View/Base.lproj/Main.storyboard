@@ -275,7 +275,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8m-yb-mv5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4356.521739130435" y="373.66071428571428"/>
+            <point key="canvasLocation" x="5957" y="414"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="gtM-w2-Mas">
@@ -909,6 +909,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="donarTableView" destination="bvk-gV-ATm" id="Hcu-Gi-Imk"/>
+                        <segue destination="lH4-3u-ZT4" kind="show" identifier="goToChat" id="9s9-ww-vle"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VYv-9f-bDd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1051,6 +1052,7 @@
         <image name="signUp" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9s9-ww-vle"/>
         <segue reference="MkG-Of-rbc"/>
     </inferredMetricsTieBreakers>
 </document>

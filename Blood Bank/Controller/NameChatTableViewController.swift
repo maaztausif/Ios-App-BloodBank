@@ -55,30 +55,6 @@ class ChatTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-//        let name = userNamesArray[indexPath.row]
-//        print("msg user name = \(name) and msg user ID = \(dic[name]!)======================////")
-//        let userID = Auth.auth().currentUser?.uid ?? "error"
-//        let msgDic = ["\(currentUserName)":"text"]
-//        let database = Database.database().reference().child("chat").child("\(dic[name]!)\(userID)")
-//        database.childByAutoId().setValue(msgDic) { (error, refrence) in
-//
-//            if error != nil{
-//                print("error in saving")
-//            }else{
-//                print("No error")
-//            }
-//        }
-//
-//        let database2 = Database.database().reference().child("chat").child("\(userID)\(dic[name]!)")
-//        database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-//
-//            if error != nil{
-//                print("error in saving")
-//            }else{
-//                print("No error")
-//            }
-//        }
-        
         user_ID = Auth.auth().currentUser?.uid ?? "error"
         otherUserName = userNamesArray[indexPath.row]
         otherUserId = dic[otherUserName]!

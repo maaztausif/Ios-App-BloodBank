@@ -8,33 +8,30 @@
 
 import UIKit
 
-class DonarListTableViewCell: UITableViewCell {
+class DonarListTableViewCell: UITableViewCell,UITableViewDelegate{
 
     @IBOutlet var lbl_name: UILabel!
     @IBOutlet var lbl_Gender: UILabel!
     @IBOutlet var lbl_BloodType: UILabel!
     @IBOutlet var lbl_LastBloodDonate: UILabel!
     @IBOutlet var txt_phoneNo: UILabel!
+    @IBOutlet var chat_Btn: UIButton!
     
     var phone_No = ""
     var currentUserName = ""
     var userID = ""
     var otherUserID = ""
     var OtherUserName = ""
-    
+    var delegate:MyCustomCellDelegator!
+
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-//        print(currentUserName)
-//        print(userID)
-//        print(otherUserID)
-//        print(OtherUserName)
 
-        
-        
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -49,10 +46,20 @@ class DonarListTableViewCell: UITableViewCell {
     
     @IBAction func btn_Chat(_ sender: Any) {
         
-        print(currentUserName)
+        print("\(currentUserName)==========")
         print("(\(userID)===========")
         print("\(otherUserID)=============")
         print("\(OtherUserName)============")
+        
+        //var mydata = "Anydata you want to send to the next controller"
+        if(self.delegate != nil){ //Just to be safe.
+            self.delegate.callSegueFromCell()
+            self.delegate.sendDataFromSegue()
+
+        }
+        
+        
     }
+
     
 }

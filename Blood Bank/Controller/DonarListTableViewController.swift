@@ -10,7 +10,33 @@ import UIKit
 import Firebase
 import ChameleonFramework
 
-class DonarListTableViewController: UITableViewController {
+protocol MyCustomCellDelegator {
+    func callSegueFromCell()
+    func sendDataFromSegue()
+}
+
+class DonarListTableViewController: UITableViewController , MyCustomCellDelegator {
+    
+    func callSegueFromCell() {
+        performSegue(withIdentifier: "goToChat", sender: self )
+   }
+    func sendDataFromSegue() {
+        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            let destinationVC = segue.destination as! ChatViewController
+            destinationVC.currentUserName = currentUserName
+            destinationVC.otherUserId = otherUserID
+            destinationVC.otherUserName = otherUserName
+            destinationVC.userId = userID
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ChatViewController
+        destinationVC.currentUserName = currentUserName
+        destinationVC.otherUserId = otherUserID
+        destinationVC.otherUserName = otherUserName
+        destinationVC.userId = userID
+    }
     
     @IBOutlet var donarTableView: UITableView!
     
@@ -29,11 +55,13 @@ class DonarListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveData()
+        getNameCurrentUser()
         userID = Auth.auth().currentUser?.uid ?? "error"
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
         retrieveDonarLis()
-        getNameCurrentUser()
         tableView.separatorStyle = .none
+//        donarTableView.reloadData()
 
         
     }
@@ -51,7 +79,9 @@ class DonarListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "DonarCell", for: indexPath) as! DonarListTableViewCell
+        cell.delegate = self
         cell.lbl_name.text = donarListArray[indexPath.row].name
         cell.lbl_BloodType.text = donarListArray[indexPath.row].blooadType
         cell.lbl_Gender.text = donarListArray[indexPath.row].gender
@@ -71,8 +101,9 @@ class DonarListTableViewController: UITableViewController {
         print("\(otherUserName)==================In cell 2 2 2")
 
         
-        if let name = dic["ali"]{
+        if let name = dic[otherUserName]{
             cell.otherUserID = name
+            otherUserID = name
             print("\(name)==================In cell 2 2 2")
         }else{
             print("nai chala bhai ===========================")
@@ -86,10 +117,10 @@ class DonarListTableViewController: UITableViewController {
             cell.backgroundColor = color
             //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         }
-
-
+        
         return cell
     }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         donarTableView.reloadData()
@@ -112,6 +143,8 @@ class DonarListTableViewController: UITableViewController {
                         self.dic[name] = user_ID1
                         self.userNamesArray.append(name)
                         print("users dictionary : \(self.dic)==========================")
+                        self.donarTableView.reloadData()
+
                     }
                 }
                 
@@ -148,7 +181,6 @@ class DonarListTableViewController: UITableViewController {
 
     
     func getNameCurrentUser(){
-        retrieveData()
         let userID = Auth.auth().currentUser?.uid ?? "error"
         let db = Database.database().reference().child("user: \(userID)")
         db.observe(.childAdded) { (snapshot) in

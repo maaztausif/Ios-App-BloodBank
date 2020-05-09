@@ -22,13 +22,14 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     var userId = ""
     var otherUserId = ""
     var userDic = [String:String]()
+    var check = ""
     
     var msgArray = [msg]()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("\(check) for segue ==================Bhai segue to hua he")
         tableViewMsg.delegate = self
         tableViewMsg.dataSource = self
         retrieveMsg()
