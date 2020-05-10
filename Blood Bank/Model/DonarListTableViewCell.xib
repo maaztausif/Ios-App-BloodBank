@@ -113,6 +113,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="call_Btn" destination="a49-Cq-I8G" id="B1a-vu-5Z5"/>
                 <outlet property="chat_Btn" destination="XJg-vX-joz" id="4Og-Ol-Grf"/>
                 <outlet property="lbl_BloodType" destination="DmY-bK-yBu" id="lOi-e9-Kol"/>
                 <outlet property="lbl_Gender" destination="qyi-JP-rBa" id="6ew-f8-z9Q"/>
@@ -120,7 +121,7 @@
                 <outlet property="lbl_name" destination="vHx-YA-thW" id="bsh-df-ja4"/>
                 <outlet property="txt_phoneNo" destination="Tno-73-ebr" id="i3F-DC-Ls3"/>
             </connections>
-            <point key="canvasLocation" x="-438" y="71"/>
+            <point key="canvasLocation" x="-687" y="-6"/>
         </tableViewCell>
     </objects>
 </document>

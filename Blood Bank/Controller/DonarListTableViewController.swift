@@ -82,6 +82,7 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DonarCell", for: indexPath) as! DonarListTableViewCell
         cell.delegate = self
+        cell.disableButtons()
         cell.lbl_name.text = donarListArray[indexPath.row].name
         cell.lbl_BloodType.text = donarListArray[indexPath.row].blooadType
         cell.lbl_Gender.text = donarListArray[indexPath.row].gender
@@ -117,6 +118,7 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
             cell.backgroundColor = color
             //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         }
+
         
         return cell
     }

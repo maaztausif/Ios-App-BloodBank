@@ -16,6 +16,7 @@ class DonarListTableViewCell: UITableViewCell,UITableViewDelegate{
     @IBOutlet var lbl_LastBloodDonate: UILabel!
     @IBOutlet var txt_phoneNo: UILabel!
     @IBOutlet var chat_Btn: UIButton!
+    @IBOutlet var call_Btn: UIButton!
     
     var phone_No = ""
     var currentUserName = ""
@@ -61,5 +62,15 @@ class DonarListTableViewCell: UITableViewCell,UITableViewDelegate{
         
     }
 
+    func disableButtons(){
+        print("bhai chala ya nai ==========\\\\\\\\\\")
+        chat_Btn.isHidden = true
+        call_Btn.isHidden = true
+        
+//        chat_Btn.isEnabled = false
+//        chat_Btn.isEnabled = false
+        
+        
+    }
     
 }
