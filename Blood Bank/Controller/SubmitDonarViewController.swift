@@ -11,12 +11,15 @@ import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
 import ChameleonFramework
+import FirebaseAuth
 
 class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,NVActivityIndicatorViewable {
 
     var currentTextField : Int!
     let pickerView = UIPickerView()
     var currentTextFieldName : UITextField!
+    var user_ID = ""
+
 
     
     @IBOutlet var txt_Name: HoshiTextField!
@@ -36,6 +39,8 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         txt_Gender.delegate = self
         txt_BloodType.delegate = self
         txt_LastBloodDonate.delegate =  self
+        
+        user_ID = Auth.auth().currentUser?.uid ?? "error"
         
         view.backgroundColor = UIColor.flatCoffee()
 
@@ -120,7 +125,7 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
             
         }else{
             let donarDB = Database.database().reference().child("Donar List")
-            let donarDic = ["Name":txt_Name.text!,"Gender":txt_Gender.text!,"Blood Type":txt_BloodType.text!,"Last Blood Donate":txt_LastBloodDonate.text!,"Phone No":txt_phoneNo.text!]
+            let donarDic = ["Name":txt_Name.text!,"Gender":txt_Gender.text!,"Blood Type":txt_BloodType.text!,"Last Blood Donate":txt_LastBloodDonate.text!,"Phone No":txt_phoneNo.text!,"User ID": user_ID]
             
             donarDB.childByAutoId().setValue(donarDic) { (error, refrence) in
                 if error != nil{         

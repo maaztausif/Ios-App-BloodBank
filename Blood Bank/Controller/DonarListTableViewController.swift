@@ -9,33 +9,38 @@
 import UIKit
 import Firebase
 import ChameleonFramework
+import FirebaseAuth
+import SwipeCellKit
 
 protocol MyCustomCellDelegator {
     func callSegueFromCell()
-    func sendDataFromSegue()
+    func sendDataFromSegue(userName_D : String,otherUserName_D:String,userID_D:String,otherUserID_D:String)
 }
+//,SwipeTableViewCellDelegate
+class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator{
 
-class DonarListTableViewController: UITableViewController , MyCustomCellDelegator {
     
-    func callSegueFromCell() {
-        performSegue(withIdentifier: "goToChat", sender: self )
-   }
-    func sendDataFromSegue() {
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            let destinationVC = segue.destination as! ChatViewController
-            destinationVC.currentUserName = currentUserName
-            destinationVC.otherUserId = otherUserID
-            destinationVC.otherUserName = otherUserName
-            destinationVC.userId = userID
-        }
-    }
+    
+  
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ChatViewController
-        destinationVC.currentUserName = currentUserName
-        destinationVC.otherUserId = otherUserID
-        destinationVC.otherUserName = otherUserName
-        destinationVC.userId = userID
+        
+        if segue.identifier == "goToChat"{
+            
+            print("segue se pehle hone wala kaaaam==========")
+            print("from Donar UserName = \(currentUserName_Segue)")
+            print("from Donar otherUserName= \(otherUserName_Segue)")
+            print("from Donar UserID= \(userID_Segue)")
+            print("from Donar otherUserID= \(otherUserID_Segue)")
+            
+            let destinationVC = segue.destination as! ChatViewController
+            destinationVC.currentUserName = currentUserName_Segue
+            destinationVC.otherUserId = otherUserID_Segue
+            destinationVC.otherUserName = otherUserName_Segue
+            destinationVC.userId = userID_Segue
+        }
+
     }
     
     @IBOutlet var donarTableView: UITableView!
@@ -45,6 +50,11 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
 
     var color : String!
     var dic = [String:String]()
+    
+    var currentUserName_Segue = ""
+    var userID_Segue = ""
+    var otherUserName_Segue = ""
+    var otherUserID_Segue = ""
 
     
     var currentUserName = ""
@@ -52,6 +62,7 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
     var otherUserName = ""
     var otherUserID = ""
     var userNamesArray = [String]()
+    var donarUserID = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +72,65 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
         retrieveDonarLis()
         tableView.separatorStyle = .none
+        
 //        donarTableView.reloadData()
 
         
     }
+    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+//        guard orientation == .right else { return nil }
+//
+//        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+//            // handle action by updating model with deletion
+//            // self.updateModel(at: indexPath)
+//            print("delete cell")
+//
+//        }
+//
+//        // customize the action appearance
+//        deleteAction.image = UIImage(named: "delete-Icon")
+//
+//        return [deleteAction]
+//    }
+//
+//    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+//        var options = SwipeOptions()
+//        options.expansionStyle = .destructive
+//        options.transitionStyle = .border
+//        return options
+//    }
+//
+//    func updateModel(at indexPath:IndexPath){
+//
+//    }
+    
+    
+    
+    func callSegueFromCell() {
+        performSegue(withIdentifier: "goToChat", sender: self )
+    }
+    func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String) {
+        
+        currentUserName_Segue = userName_D
+        otherUserName_Segue = otherUserName_D
+        otherUserID_Segue = otherUserID_D
+        userID_Segue = userID_D
+        
+        print("from Donar UserName = \(currentUserName_Segue)")
+        print("from Donar otherUserName= \(otherUserName_Segue)")
+        print("from Donar UserID= \(userID_Segue)")
+        print("from Donar otherUserID= \(otherUserID_Segue)")
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            let destinationVC = segue.destination as! ChatViewController
+//            destinationVC.currentUserName = currentUserName
+//            destinationVC.otherUserId = otherUserID
+//            destinationVC.otherUserName = otherUserName
+//            destinationVC.userId = userID
+//        }
+    }
+    
+    
 
     // MARK: - Table view data source
 
@@ -78,11 +144,17 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
+ 
         let cell = tableView.dequeueReusableCell(withIdentifier: "DonarCell", for: indexPath) as! DonarListTableViewCell
+        
+//        if userID == donarUserID{
+//            cell.disableButtons()
+//        }else{
+//            cell.enableButton()
+//        }
+        
         cell.delegate = self
-        cell.disableButtons()
+        
         cell.lbl_name.text = donarListArray[indexPath.row].name
         cell.lbl_BloodType.text = donarListArray[indexPath.row].blooadType
         cell.lbl_Gender.text = donarListArray[indexPath.row].gender
@@ -98,6 +170,8 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
         cell.OtherUserName = donarListArray[indexPath.row].name
         print("\(donarListArray[indexPath.row].name)==================In cell")
         otherUserName = donarListArray[indexPath.row].name
+        
+        print("\(otherUserName) otherUserName====================")
 
         print("\(otherUserName)==================In cell 2 2 2")
 
@@ -125,7 +199,20 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
     
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        donarTableView.reloadData()
+        
+        let cell = tableView.cellForRow(at: indexPath) as! DonarListTableViewCell
+        print("\(cell.otherUserID) : otherUserID")
+        print("\(cell.userID) : userID")
+        print("\(cell.currentUserName) : userName")
+        print("\(cell.OtherUserName) : otherUserName")
+        //let text = cell.textField.text
+        print("================\\====================")
+        print("\(otherUserID) : otherUserID")
+        print("\(userID) : userID")
+        print("\(currentUserName) : userName")
+        print("\(otherUserName) : otherUserName")
+   
+        //donarTableView.reloadData()
     }
 
     
@@ -146,7 +233,7 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
                         self.userNamesArray.append(name)
                         print("users dictionary : \(self.dic)==========================")
                         self.donarTableView.reloadData()
-
+                        
                     }
                 }
                 
@@ -173,7 +260,7 @@ class DonarListTableViewController: UITableViewController , MyCustomCellDelegato
             user_Donar.blooadType = snapshotValue["Blood Type"]!
             user_Donar.lastBloodDonate = snapshotValue["Last Blood Donate"]!
             user_Donar.phoneNo = snapshotValue["Phone No"]!
-            //self.color = UIColor.randomFlat().hexValue()
+            self.donarUserID = snapshotValue["User ID"]!
             self.color = UIColor.flatSand()?.hexValue()
             self.donarListArray.append(user_Donar)
             self.donarTableView.reloadData()

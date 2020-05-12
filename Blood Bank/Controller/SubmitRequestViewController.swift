@@ -10,6 +10,8 @@ import UIKit
 import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
+import FirebaseAuth
+
 
 class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NVActivityIndicatorViewable{
 

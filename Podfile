@@ -12,6 +12,7 @@ pod 'Firebase/Database'
 pod 'SVProgressHUD'
 pod 'ChameleonFramework'
 pod 'TextFieldEffects'
+pod 'SwipeCellKit'
 pod 'NVActivityIndicatorView'
 
 end

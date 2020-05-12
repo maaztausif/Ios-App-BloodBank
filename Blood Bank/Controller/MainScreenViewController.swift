@@ -9,6 +9,8 @@
 import UIKit
 import ChameleonFramework
 import Firebase
+import FirebaseAuth
+
 
 class MainScreenViewController: UIViewController {
     

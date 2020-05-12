@@ -10,6 +10,8 @@ import UIKit
 import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
+import FirebaseAuth
+
 
 class SignInViewController: UIViewController ,NVActivityIndicatorViewable{
     @IBOutlet var txt_Email: HoshiTextField!

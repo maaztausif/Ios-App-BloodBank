@@ -11,6 +11,8 @@ import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
 import ChameleonFramework
+import FirebaseAuth
+
 
 class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,NVActivityIndicatorViewable {
     

@@ -10,6 +10,7 @@ import UIKit
 import TextFieldEffects
 import Firebase
 import NVActivityIndicatorView
+import FirebaseAuth
 
 
 class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
