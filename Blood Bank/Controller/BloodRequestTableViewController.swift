@@ -10,14 +10,63 @@ import UIKit
 import Firebase
 import NVActivityIndicatorView
 import ChameleonFramework
+import FirebaseAuth
 
-class BloodRequestTableViewController: UITableViewController ,NVActivityIndicatorViewable{
+protocol MyCustomCellDelegatorForRequest {
+    func callSegueFromCell()
+    func sendDataFromSegue(userName_D : String,otherUserName_D:String,userID_D:String,otherUserID_D:String)
+}
+
+
+class BloodRequestTableViewController: UITableViewController ,NVActivityIndicatorViewable,MyCustomCellDelegatorForRequest{
+    func callSegueFromCell() {
+        performSegue(withIdentifier: "goToChat", sender: self)
+    }
+    
+    func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String) {
+        
+        print("in segue user name= \(userName_D)")
+        print("in segue other user name= \(otherUserName_D)")
+        print("in segue other userID= \(otherUserID_D)")
+        print("in segue user  id= \(userID_D)")
+        
+        currentUserName_S = userName_D
+        userID_S = userID_D
+        otherUserID_S = otherUserID_D
+        otherUserName_S = otherUserName_D
+
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToChat"{
+    
+            let destinationVC = segue.destination as! ChatViewController
+            destinationVC.currentUserName = currentUserName_S
+            destinationVC.otherUserId = otherUserID_S
+            destinationVC.otherUserName = otherUserName_S
+            destinationVC.userId = userID_S
+        }
+    }
+    
+    var currentUserName_S = ""
+    var userID_S = ""
+    var otherUserName_S = ""
+    var otherUserID_S = ""
+    
+    
     var request_Array = [Requests]()
     var color:String = ""
+    var userReqDic = [String:String]()
+    var currentUserName = ""
+    var userID = ""
 
     @IBOutlet var requestTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        getNameCurrentUser()
         
         requestTableView.delegate = self
         requestTableView.dataSource = self
@@ -55,12 +104,23 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RequestCell", for: indexPath) as! TableViewCell
+        
+        cell.delegate = self
+        
         cell.lbl_Name.text = request_Array[indexPath.row].name
         cell.lbl_BloodType.text = request_Array[indexPath.row].blood_Type
         cell.lbl_RequestFor.text = request_Array[indexPath.row].request_For
         cell.lbl_Location.text = request_Array[indexPath.row].location
         cell.txt_PhoneNo.text = request_Array[indexPath.row].phoneNo
         cell.phone_No = request_Array[indexPath.row].phoneNo
+        
+        print("in table view Cell ======= \(currentUserName)")
+        
+        cell.userName = currentUserName
+        cell.userID = userID
+        cell.otherUsername = request_Array[indexPath.row].name
+        cell.otherUserID = userReqDic[request_Array[indexPath.row].name]!
+        
         let colorName = UIColor(hexString: color )
         
         if let color = colorName?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(17)) {
@@ -68,6 +128,15 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         }
         return cell
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! TableViewCell
+        print("\(cell.otherUserID) : otherUserID")
+        print("\(cell.userID) : userID")
+        print("\(cell.userName) : userName")
+        print("\(cell.otherUsername) : otherUserName")
     }
     
     
@@ -83,7 +152,8 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             user_Requests.request_For = snapshotValue["Request For"]!
             user_Requests.location = snapshotValue["Area"]!
             user_Requests.phoneNo = snapshotValue["Phone No"]!
-            
+            self.userReqDic[snapshotValue["Name"]!] = snapshotValue["User ID"]!
+            print("\(self.userReqDic) userDic =================")
             self.request_Array.append(user_Requests)
             self.color = UIColor.flatSand().hexValue()
             self.configureTableView()
@@ -98,5 +168,21 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     }
  
 
+    func getNameCurrentUser(){
+        userID = Auth.auth().currentUser?.uid ?? "error"
+        let db = Database.database().reference().child("user: \(userID)")
+        db.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
+            print(snapshot)
+            if let currentName = snapshotValue["Name"]{
+                self.currentUserName = currentName
+                print(" this is current user name : \(self.currentUserName)=======================")
+                
+            }
+            self.requestTableView.reloadData()
+        }
+        
+    }
+    
 
 }

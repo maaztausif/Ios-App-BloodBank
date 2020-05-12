@@ -18,6 +18,13 @@ class TableViewCell: UITableViewCell {
     
     var phone_No = ""
     
+    
+    var userName = ""
+    var userID = ""
+    var otherUsername = ""
+    var otherUserID = ""
+    var delegate:MyCustomCellDelegatorForRequest!
+
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,4 +43,14 @@ class TableViewCell: UITableViewCell {
     }
     
   }
+    
+    @IBAction func btn_Chat(_ sender: Any) {
+        
+        if(self.delegate != nil){ //Just to be safe.
+            self.delegate.sendDataFromSegue(userName_D: userName,otherUserName_D: otherUsername,userID_D: userID,otherUserID_D: otherUserID)
+            self.delegate.callSegueFromCell()
+        }
+        
+    }
+    
 }

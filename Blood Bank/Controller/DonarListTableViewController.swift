@@ -19,32 +19,7 @@ protocol MyCustomCellDelegator {
 //,SwipeTableViewCellDelegate
 class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator{
 
-    
-    
-  
 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "goToChat"{
-            
-            print("from Donar UserName = \(currentUserName_Segue)")
-            print("from Donar otherUserName= \(otherUserName_Segue)")
-            print("from Donar UserID= \(userID_Segue)")
-            print("from Donar otherUserID= \(otherUserID_Segue)")
-            
-
-                
-                let destinationVC = segue.destination as! ChatViewController
-                destinationVC.currentUserName = currentUserName_Segue
-                destinationVC.otherUserId = otherUserID_Segue
-                destinationVC.otherUserName = otherUserName_Segue
-                destinationVC.userId = userID_Segue
-            
-    
-        }
-
-    }
     
     @IBOutlet var donarTableView: UITableView!
     
@@ -113,6 +88,29 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     func callSegueFromCell() {
         performSegue(withIdentifier: "goToChat", sender: self )
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToChat"{
+            
+            print("from Donar UserName = \(currentUserName_Segue)")
+            print("from Donar otherUserName= \(otherUserName_Segue)")
+            print("from Donar UserID= \(userID_Segue)")
+            print("from Donar otherUserID= \(otherUserID_Segue)")
+            
+            
+            
+            let destinationVC = segue.destination as! ChatViewController
+            destinationVC.currentUserName = currentUserName_Segue
+            destinationVC.otherUserId = otherUserID_Segue
+            destinationVC.otherUserName = otherUserName_Segue
+            destinationVC.userId = userID_Segue
+            
+            
+        }
+        
+    }
+    
     func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String) {
         
         currentUserName_Segue = userName_D

@@ -90,11 +90,19 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-Q6-rnc">
-                        <rect key="frame" x="291" y="61" width="51" height="55"/>
+                        <rect key="frame" x="291" y="21" width="51" height="55"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Call"/>
                         <connections>
                             <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T48-vl-vIP"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3K-3m-0RZ">
+                        <rect key="frame" x="298" y="96" width="44" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" title="Chat"/>
+                        <connections>
+                            <action selector="btn_Chat:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CSo-Gp-K3c"/>
                         </connections>
                     </button>
                 </subviews>
@@ -107,7 +115,7 @@
                 <outlet property="lbl_RequestFor" destination="lXX-Mv-FaB" id="Wxv-BS-Thh"/>
                 <outlet property="txt_PhoneNo" destination="Sih-0r-zJq" id="e8f-3D-G1F"/>
             </connections>
-            <point key="canvasLocation" x="-162.31884057971016" y="-33.482142857142854"/>
+            <point key="canvasLocation" x="-317.39130434782612" y="-57.589285714285708"/>
         </tableViewCell>
     </objects>
 </document>

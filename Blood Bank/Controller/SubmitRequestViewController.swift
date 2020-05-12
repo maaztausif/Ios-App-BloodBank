@@ -29,6 +29,7 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
     let bloodTypes = ["","A+","A-","O+","O-","B+","B-","AB+","AB-"]
     let area = ["","F.B.Area","Malir","Qaidabad","Hedri","Nazimabad","ShahFaisal","Gulshan","Johar","Lyari","liaqtabad"]
     let request_For = ["Teacher","Son","Daughter","wife","Girl","Boy","Mother","Father","Collegue","Friends"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -134,7 +135,7 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
 
             let userDB = Database.database().reference().child("Blood Request")
             
-            let Request_Dic = ["Name":txt_Name.text! ,"Blood Type":txt_BloodType.text! ,"Request For":txt_RequestFor.text! ,"Area":txt_Location.text!,"Phone No":txt_PhoneNo.text!]
+            let Request_Dic = ["Name":txt_Name.text! ,"Blood Type":txt_BloodType.text! ,"Request For":txt_RequestFor.text! ,"Area":txt_Location.text!,"Phone No":txt_PhoneNo.text!,"User ID":userID]
             
             
             userDB.childByAutoId().setValue(Request_Dic) { (error, refrence) in
