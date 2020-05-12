@@ -28,17 +28,20 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         
         if segue.identifier == "goToChat"{
             
-            print("segue se pehle hone wala kaaaam==========")
             print("from Donar UserName = \(currentUserName_Segue)")
             print("from Donar otherUserName= \(otherUserName_Segue)")
             print("from Donar UserID= \(userID_Segue)")
             print("from Donar otherUserID= \(otherUserID_Segue)")
             
-            let destinationVC = segue.destination as! ChatViewController
-            destinationVC.currentUserName = currentUserName_Segue
-            destinationVC.otherUserId = otherUserID_Segue
-            destinationVC.otherUserName = otherUserName_Segue
-            destinationVC.userId = userID_Segue
+
+                
+                let destinationVC = segue.destination as! ChatViewController
+                destinationVC.currentUserName = currentUserName_Segue
+                destinationVC.otherUserId = otherUserID_Segue
+                destinationVC.otherUserName = otherUserName_Segue
+                destinationVC.userId = userID_Segue
+            
+    
         }
 
     }
@@ -55,7 +58,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     var userID_Segue = ""
     var otherUserName_Segue = ""
     var otherUserID_Segue = ""
-
+    var donar_OtherUserID = ""
     
     var currentUserName = ""
     var userID = ""
@@ -117,17 +120,13 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         otherUserID_Segue = otherUserID_D
         userID_Segue = userID_D
         
+
+        
         print("from Donar UserName = \(currentUserName_Segue)")
         print("from Donar otherUserName= \(otherUserName_Segue)")
         print("from Donar UserID= \(userID_Segue)")
         print("from Donar otherUserID= \(otherUserID_Segue)")
-//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            let destinationVC = segue.destination as! ChatViewController
-//            destinationVC.currentUserName = currentUserName
-//            destinationVC.otherUserId = otherUserID
-//            destinationVC.otherUserName = otherUserName
-//            destinationVC.userId = userID
-//        }
+
     }
     
     
@@ -182,6 +181,17 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             print("\(name)==================In cell 2 2 2")
         }else{
             print("nai chala bhai ===========================")
+            let otherUserDB = Database.database().reference().child("Donar List")
+            otherUserDB.observe(.childAdded) { (userSnapshot) in
+                print("snapshot he ye : \(userSnapshot)")
+                let snapshotValue = userSnapshot.value as! Dictionary<String,String>
+
+                if self.otherUserName == self.otherUserName{
+                    cell.otherUserID = snapshotValue["User ID"]!
+                    
+                }
+                
+            }
         }
         
     //cell.backgroundColor = UIColor(hexString: "1D9BF6")
@@ -205,7 +215,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         print("\(cell.userID) : userID")
         print("\(cell.currentUserName) : userName")
         print("\(cell.OtherUserName) : otherUserName")
-        //let text = cell.textField.text
+        
+        
+        
         print("================\\====================")
         print("\(otherUserID) : otherUserID")
         print("\(userID) : userID")
