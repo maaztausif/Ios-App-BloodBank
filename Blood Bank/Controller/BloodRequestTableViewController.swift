@@ -112,6 +112,16 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
         
         cell.delegate = self
         
+        if userID == userReqDic[request_Array[indexPath.row].name]!{
+            print("disable for user id ============p")
+            //            cell.isUserInteractionEnabled = false
+            //            cell.selectionStyle = .none
+            cell.disableButtons()
+        }else{
+            print("enable for user id ============p")
+            cell.enableButton()
+        }
+        
         cell.lbl_Name.text = request_Array[indexPath.row].name
         cell.lbl_BloodType.text = request_Array[indexPath.row].blood_Type
         cell.lbl_RequestFor.text = request_Array[indexPath.row].request_For

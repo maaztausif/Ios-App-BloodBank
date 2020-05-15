@@ -146,7 +146,15 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
  
         let cell = tableView.dequeueReusableCell(withIdentifier: "DonarCell", for: indexPath) as! DonarListTableViewCell
         
-
+                if userID == userReqDic[donarListArray[indexPath.row].name]!{
+                    print("disable for user id ============p")
+        //            cell.isUserInteractionEnabled = false
+        //            cell.selectionStyle = .none
+                     cell.disableButtons()
+                }else{
+                    print("enable for user id ============p")
+                    cell.enableButton()
+                }
         
         cell.delegate = self
         

@@ -109,6 +109,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="call_Btn" destination="8vU-Q6-rnc" id="tfT-kJ-a0C"/>
+                <outlet property="chat_Btn" destination="w3K-3m-0RZ" id="rjF-cx-bwM"/>
                 <outlet property="lbl_BloodType" destination="abZ-va-J6Z" id="ZGm-ZH-yRC"/>
                 <outlet property="lbl_Location" destination="4F6-Kd-Lxe" id="0IE-Qa-faN"/>
                 <outlet property="lbl_Name" destination="Kn0-Xd-Z1V" id="6TW-rJ-q5d"/>

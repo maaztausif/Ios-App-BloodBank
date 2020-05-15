@@ -52,13 +52,12 @@ class DonarListTableViewCell: UITableViewCell,UITableViewDelegate{
         print("\(otherUserID)=============")
         print("\(OtherUserName)============")
         
-        //var mydata = "Anydata you want to send to the next controller"
-        if(self.delegate != nil){ //Just to be safe.
-            self.delegate.sendDataFromSegue(userName_D: currentUserName,otherUserName_D: OtherUserName,userID_D: userID,otherUserID_D: otherUserID)
-            self.delegate.callSegueFromCell()
-        }
-        
-        
+        //var mydata = "Anydata you want to send to the next controller
+            if(self.delegate != nil){ //Just to be safe.
+                self.delegate.sendDataFromSegue(userName_D: currentUserName,otherUserName_D: OtherUserName,userID_D: userID,otherUserID_D: otherUserID)
+                self.delegate.callSegueFromCell()
+            }
+ 
     }
 
     func disableButtons(){

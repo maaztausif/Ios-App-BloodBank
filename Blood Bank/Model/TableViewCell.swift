@@ -15,6 +15,9 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var lbl_RequestFor: UILabel!
     @IBOutlet var lbl_Location: UILabel!
     @IBOutlet var txt_PhoneNo: UILabel!
+    @IBOutlet var call_Btn: UIButton!
+    @IBOutlet var chat_Btn: UIButton!
+    
     
     var request = 1
     
@@ -54,5 +57,18 @@ class TableViewCell: UITableViewCell {
         }
         
     }
+    
+    func disableButtons(){
+        print("bhai chala ya nai ==========\\\\\\\\\\")
+        chat_Btn.isHidden = true
+        call_Btn.isHidden = true
+        
+    }
+    func enableButton(){
+        print("bhai chala ya nai ////////////==========\\\\\\\\\\")
+        chat_Btn.isHidden = false
+        call_Btn.isHidden = false
+    }
+
     
 }
