@@ -16,6 +16,8 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var lbl_Location: UILabel!
     @IBOutlet var txt_PhoneNo: UILabel!
     
+    var request = 1
+    
     var phone_No = ""
     
     
@@ -47,7 +49,7 @@ class TableViewCell: UITableViewCell {
     @IBAction func btn_Chat(_ sender: Any) {
         
         if(self.delegate != nil){ //Just to be safe.
-            self.delegate.sendDataFromSegue(userName_D: userName,otherUserName_D: otherUsername,userID_D: userID,otherUserID_D: otherUserID)
+            self.delegate.sendDataFromSegue(userName_D: userName,otherUserName_D: otherUsername,userID_D: userID,otherUserID_D: otherUserID,req:request)
             self.delegate.callSegueFromCell()
         }
         

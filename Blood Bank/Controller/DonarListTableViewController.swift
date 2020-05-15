@@ -28,6 +28,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 
     var color : String!
     var dic = [String:String]()
+    var userReqDic = [String:String]()
+
     
     var currentUserName_Segue = ""
     var userID_Segue = ""
@@ -44,9 +46,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userID = Auth.auth().currentUser?.uid ?? "error"
         retrieveData()
         getNameCurrentUser()
-        userID = Auth.auth().currentUser?.uid ?? "error"
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
         retrieveDonarLis()
         tableView.separatorStyle = .none
@@ -144,11 +146,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
  
         let cell = tableView.dequeueReusableCell(withIdentifier: "DonarCell", for: indexPath) as! DonarListTableViewCell
         
-//        if userID == donarUserID{
-//            cell.disableButtons()
-//        }else{
-//            cell.enableButton()
-//        }
+
         
         cell.delegate = self
         
@@ -161,36 +159,46 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         
         
         cell.currentUserName = currentUserName
-        print("\(currentUserName)==================for name")
-
-        cell.userID = userID
+        cell.otherUserID = userReqDic[donarListArray[indexPath.row].name]!
         cell.OtherUserName = donarListArray[indexPath.row].name
-        print("\(donarListArray[indexPath.row].name)==================In cell")
-        otherUserName = donarListArray[indexPath.row].name
-        
-        print("\(otherUserName) otherUserName====================")
-
-        print("\(otherUserName)==================In cell 2 2 2")
+        cell.userID = userID
 
         
-        if let name = dic[otherUserName]{
-            cell.otherUserID = name
-            otherUserID = name
-            print("\(name)==================In cell 2 2 2")
-        }else{
-            print("nai chala bhai ===========================")
-            let otherUserDB = Database.database().reference().child("Donar List")
-            otherUserDB.observe(.childAdded) { (userSnapshot) in
-                print("snapshot he ye : \(userSnapshot)")
-                let snapshotValue = userSnapshot.value as! Dictionary<String,String>
-
-                if self.otherUserName == self.otherUserName{
-                    cell.otherUserID = snapshotValue["User ID"]!
-                    
-                }
-                
-            }
-        }
+        
+        //check
+        
+//        cell.currentUserName = currentUserName
+//        print("\(currentUserName)==================for name")
+//
+//        cell.userID = userID
+//        cell.OtherUserName = donarListArray[indexPath.row].name
+//        print("\(donarListArray[indexPath.row].name)==================In cell")
+//        otherUserName = donarListArray[indexPath.row].name
+//
+//        print("\(otherUserName) otherUserName====================")
+//
+//        print("\(otherUserName)==================In cell 2 2 2")
+//
+//
+//        if let name = dic[otherUserName]{
+//            cell.otherUserID = name
+//            otherUserID = name
+//            print("\(name)==================In cell 2 2 2")
+//        }else{
+//            print("nai chala bhai ===========================")
+//            let otherUserDB = Database.database().reference().child("Donar List")
+//            otherUserDB.observe(.childAdded) { (userSnapshot) in
+//                print("snapshot he ye : \(userSnapshot)")
+//                let snapshotValue = userSnapshot.value as! Dictionary<String,String>
+//
+//                if self.otherUserName == self.otherUserName{
+//                    print("other user name ! ========= \(snapshotValue["User ID"]!) ")
+//                    cell.otherUserID = snapshotValue["User ID"]!
+//
+//                }
+//
+//            }
+//        }
         
     //cell.backgroundColor = UIColor(hexString: "1D9BF6")
 
@@ -200,6 +208,16 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             cell.backgroundColor = color
             //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         }
+        
+//                if userID == donarUserID{
+//                    print("disable for user id ============p")
+//                    cell.isUserInteractionEnabled = false
+//                    cell.selectionStyle = .none
+//                   // cell.disableButtons()
+//                }else{
+//                    print("enable for user id ============p")
+//                   // cell.enableButton()
+//                }
 
         
         return cell
@@ -221,40 +239,61 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         print("\(userID) : userID")
         print("\(currentUserName) : userName")
         print("\(otherUserName) : otherUserName")
+        
+//        if cell.userID == cell.otherUserID{
+//            print("disable for user id ============p")
+////            cell.isUserInteractionEnabled = false
+////            cell.selectionStyle = .none
+//             cell.disableButtons()
+//        }else{
+//            print("enable for user id ============p")
+//            cell.enableButton()
+//        }
+//        donarTableView.reloadData()
    
-        //donarTableView.reloadData()
     }
+    
+//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        print("bhai will select row at chala he ==================")
+//    }
 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    }
     
     func retrieveData(){
-        let database = Database.database().reference().child("All Users")
         
-        database.observe(.childAdded) { (Snapshot) in
-            print(Snapshot)
-            let snapshotValue = Snapshot.value as! Dictionary<String,String>
-            let user_ID1 = snapshotValue["userID"]!
-            let userNameDB = database.database.reference().child("user: \(user_ID1)")
-            userNameDB.observe(.childAdded, with: { (userSnapShot) in
-                let userSnapshotValue = userSnapShot.value as! Dictionary<String,String>
-                if let name = userSnapshotValue["Name"] {
-                    if self.currentUserName == name{
-                    }else{
-                        self.dic[name] = user_ID1
-                        self.userNamesArray.append(name)
-                        print("users dictionary : \(self.dic)==========================")
-                        self.donarTableView.reloadData()
-                        
-                    }
-                }
-                
-                print(self.userNamesArray)
-                
-            })
-            
-            
-            
-            
-        }
+//        print("retrieve data he =================")
+//        let database = Database.database().reference().child("All Users")
+//
+//        database.observe(.childAdded) { (Snapshot) in
+//            let snapshotValue = Snapshot.value as! Dictionary<String,String>
+//            let user_ID1 = snapshotValue["userID"]!
+//            print("\(user_ID1)=============43")
+//            let userNameDB = database.database.reference().child("user: \(user_ID1)")
+//
+//            userNameDB.observe(.childAdded, with: { (userSnapShot) in
+//                print(userSnapShot)
+//                let userSnapshotValue = userSnapShot.value as! Dictionary<String,String>
+//                if let name = userSnapshotValue["Name"] {
+//                    if self.currentUserName == name{
+//                    }else{
+//                        self.dic[name] = user_ID1
+//                        self.userNamesArray.append(name)
+//                        print("users dictionary : \(self.dic)==========================")
+//                        self.donarTableView.reloadData()
+//
+//                    }
+//                }
+//
+//                print(self.userNamesArray)
+//
+//            })
+//
+//
+//
+//
+//        }
         
     }
     
@@ -262,7 +301,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     func retrieveDonarLis(){
         let donarDB = Database.database().reference().child("Donar List")
         donarDB.observe(.childAdded) { (Snapshot) in
-            print(Snapshot)
             let snapshotValue = Snapshot.value as! Dictionary<String,String>
             let user_Donar = Donar()
             user_Donar.name = snapshotValue["Name"]!
@@ -270,6 +308,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             user_Donar.blooadType = snapshotValue["Blood Type"]!
             user_Donar.lastBloodDonate = snapshotValue["Last Blood Donate"]!
             user_Donar.phoneNo = snapshotValue["Phone No"]!
+            self.userReqDic[snapshotValue["Name"]!] = snapshotValue["User ID"]!
+            print("\(self.userReqDic) userDic =================")
             self.donarUserID = snapshotValue["User ID"]!
             self.color = UIColor.flatSand()?.hexValue()
             self.donarListArray.append(user_Donar)
@@ -284,7 +324,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         let db = Database.database().reference().child("user: \(userID)")
         db.observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as! Dictionary<String,String>
-            print(snapshot)
             if let currentName = snapshotValue["Name"]{
                 self.currentUserName = currentName
                 print(" this is current user name : \(self.currentUserName)=======================")
@@ -294,6 +333,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         }
         
     }
+    
+
 
 
 }

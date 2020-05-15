@@ -14,7 +14,7 @@ import FirebaseAuth
 
 protocol MyCustomCellDelegatorForRequest {
     func callSegueFromCell()
-    func sendDataFromSegue(userName_D : String,otherUserName_D:String,userID_D:String,otherUserID_D:String)
+    func sendDataFromSegue(userName_D : String,otherUserName_D:String,userID_D:String,otherUserID_D:String,req:Int)
 }
 
 
@@ -23,18 +23,20 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
         performSegue(withIdentifier: "goToChat", sender: self)
     }
     
-    func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String) {
+    func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String,req:Int) {
         
         print("in segue user name= \(userName_D)")
         print("in segue other user name= \(otherUserName_D)")
         print("in segue other userID= \(otherUserID_D)")
         print("in segue user  id= \(userID_D)")
+        print("in segue user  id= \(req)request he ye")
+
         
         currentUserName_S = userName_D
         userID_S = userID_D
         otherUserID_S = otherUserID_D
         otherUserName_S = otherUserName_D
-
+        for_Req = req
         
     }
     
@@ -46,6 +48,8 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             destinationVC.otherUserId = otherUserID_S
             destinationVC.otherUserName = otherUserName_S
             destinationVC.userId = userID_S
+            destinationVC.chat_Mod = for_Req
+            
         }
     }
     
@@ -53,6 +57,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     var userID_S = ""
     var otherUserName_S = ""
     var otherUserID_S = ""
+    var for_Req = 2
     
     
     var request_Array = [Requests]()

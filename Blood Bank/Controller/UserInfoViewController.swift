@@ -32,21 +32,20 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.flatCoffee()
         retrieveUserData()
+        view.backgroundColor = UIColor.flatCoffee()
     }
     
     func retrieveUserData(){
         
         
         let userID = Auth.auth().currentUser?.uid ?? "error"
-        print("\(user_Id)==========================================================")
+        
+        print("\(userID)==========================================================hoko")
         let userDatabase = Database.database().reference().child("user: \(userID)")
         userDatabase.observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as! Dictionary<String,String>
-            
             print(snapshot)
-            
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
             self.txt_Name.text = snapshotValue["Name"]!
             self.txt_PhoneNo.text = snapshotValue["Phone No"]!
             self.txt_Email.text = snapshotValue["Email"]!
@@ -59,6 +58,33 @@ class UserInfoViewController: UIViewController {
         }     
         
     }
-  
+    
+    
+    @IBAction func update(_ sender: Any) {
+        let dic  = ["Name":txt_Name.text!,"Area":txt_Area.text!,"Blood Type":txt_BloodType.text!,"Blood disease":txt_Disease.text!,"Date Of Birth":txt_DOB.text!,"Email":txt_Email.text!,"Gender":txt_Gender.text!,"Last Blood Donate":txt_lastBD.text!,"Phone No":txt_PhoneNo.text!]
+        
+        let userID = Auth.auth().currentUser?.uid ?? "error"
+        let db = Database.database().reference()
+        db.child("user: \(userID)").setValue(dic) { (error, refrence) in
+            if error != nil{
+                print("update nai hua")
+            }else{
+                print("update ho gya he")
+            }
+        }
+        
+//        ref.child("users").child(user.uid).setValue(dic) {
+//            (error:Error?, ref:DatabaseReference) in
+//            if let error = error {
+//                print("Data could not be saved: \(error).")
+//            } else {
+//                print("Data saved successfully!")
+//            }
+//        }
+        
+      retrieveUserData()
+        
+    }
+    
 
 }
