@@ -57,7 +57,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 
         
     }
-    
+    // swipe cell
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
 //        guard orientation == .right else { return nil }
 //
@@ -84,6 +84,52 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 //    func updateModel(at indexPath:IndexPath){
 //
 //    }
+    
+    //swipe cell kit
+    
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        print("\(userReqDic[donarListArray[indexPath.row].name]!) can edit row")
+        if userID == userReqDic[donarListArray[indexPath.row].name]!{
+            return true
+
+        }else{
+            return false
+
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
+            let key1 = Database.database().reference().child("Donar List").childByAutoId().key!
+            guard let key3 = Database.database().reference().child("Donar List").key else { return }
+            let key2 = Database.database().reference().child("Donar List").childByAutoId().key!
+            print("key he ye = \(key1)")
+            print("key 2 he ye = \(key2)")
+            print("key 3 he ye = \(key3)")
+
+//            Database.database().reference(withPath: "Donar List").child("-M7_63bhukMeTdc4W6CB").removeValue()
+
+//            Database.database().reference().child("Donar List").removeValue { (error, ref) in
+//                if error != nil {
+//                    print("error \(error)")
+//                }else{
+//                    print("no error ==================")
+//                    self.donarTableView.reloadData()
+//                }
+//            }
+            
+            print("deleta wala he")
+//            let db = Database.database().reference().child("Donar List").observe(.childAdded, with: { (snapshot) in
+//                print(snapshot)
+//            })
+        }
+        return [deleteAction]
+    }
+    
+    
+    
     
     
     
@@ -148,8 +194,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         
                 if userID == userReqDic[donarListArray[indexPath.row].name]!{
                     print("disable for user id ============p")
-        //            cell.isUserInteractionEnabled = false
-        //            cell.selectionStyle = .none
                      cell.disableButtons()
                 }else{
                     print("enable for user id ============p")
@@ -202,9 +246,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 //                if self.otherUserName == self.otherUserName{
 //                    print("other user name ! ========= \(snapshotValue["User ID"]!) ")
 //                    cell.otherUserID = snapshotValue["User ID"]!
-//
 //                }
-//
 //            }
 //        }
         
@@ -214,20 +256,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 
         if let color = colorName?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(17)) {
             cell.backgroundColor = color
-            //cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         }
-        
-//                if userID == donarUserID{
-//                    print("disable for user id ============p")
-//                    cell.isUserInteractionEnabled = false
-//                    cell.selectionStyle = .none
-//                   // cell.disableButtons()
-//                }else{
-//                    print("enable for user id ============p")
-//                   // cell.enableButton()
-//                }
-
-        
         return cell
     }
     
@@ -247,16 +276,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         print("\(userID) : userID")
         print("\(currentUserName) : userName")
         print("\(otherUserName) : otherUserName")
-        
-//        if cell.userID == cell.otherUserID{
-//            print("disable for user id ============p")
-////            cell.isUserInteractionEnabled = false
-////            cell.selectionStyle = .none
-//             cell.disableButtons()
-//        }else{
-//            print("enable for user id ============p")
-//            cell.enableButton()
-//        }
 //        donarTableView.reloadData()
    
     }

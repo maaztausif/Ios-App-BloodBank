@@ -56,22 +56,29 @@ class UserInfoViewController: UIViewController {
             self.txt_Area.text = snapshotValue["Area"]!
             self.txt_Disease.text = snapshotValue["Blood disease"]!
         }     
-        
+        print("\(userID)==========================================================hoko")
+
     }
     
     
     @IBAction func update(_ sender: Any) {
-        let dic  = ["Name":txt_Name.text!,"Area":txt_Area.text!,"Blood Type":txt_BloodType.text!,"Blood disease":txt_Disease.text!,"Date Of Birth":txt_DOB.text!,"Email":txt_Email.text!,"Gender":txt_Gender.text!,"Last Blood Donate":txt_lastBD.text!,"Phone No":txt_PhoneNo.text!]
+        
+        let userDic = ["Name":txt_Name.text!,"Email":txt_Email.text!,"Phone No":txt_PhoneNo.text!,"Blood Type":txt_BloodType.text!,"Gender":txt_Gender.text!,"Area":txt_Area.text!,"Date Of Birth":txt_DOB.text!,"Last Blood Donate":txt_lastBD.text!,"Blood disease":txt_Disease.text!]
+        
+        print(userDic)
         
         let userID = Auth.auth().currentUser?.uid ?? "error"
         let db = Database.database().reference()
-        db.child("user: \(userID)").setValue(dic) { (error, refrence) in
+        db.child("user: \(userID)").setValue(userDic) { (error, refrence) in
             if error != nil{
                 print("update nai hua")
             }else{
                 print("update ho gya he")
             }
         }
+        
+
+
         
 //        ref.child("users").child(user.uid).setValue(dic) {
 //            (error:Error?, ref:DatabaseReference) in
