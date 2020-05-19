@@ -29,7 +29,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     var color : String!
     var dic = [String:String]()
     var userReqDic = [String:String]()
-
+    var donarID = [String]()
     
     var currentUserName_Segue = ""
     var userID_Segue = ""
@@ -89,7 +89,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        print("\(userReqDic[donarListArray[indexPath.row].name]!) can edit row")
         if userID == userReqDic[donarListArray[indexPath.row].name]!{
             return true
 
@@ -101,29 +100,12 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            
-            let key1 = Database.database().reference().child("Donar List").childByAutoId().key!
-            guard let key3 = Database.database().reference().child("Donar List").key else { return }
-            let key2 = Database.database().reference().child("Donar List").childByAutoId().key!
-            print("key he ye = \(key1)")
-            print("key 2 he ye = \(key2)")
-            print("key 3 he ye = \(key3)")
-
-//            Database.database().reference(withPath: "Donar List").child("-M7_63bhukMeTdc4W6CB").removeValue()
-
-//            Database.database().reference().child("Donar List").removeValue { (error, ref) in
-//                if error != nil {
-//                    print("error \(error)")
-//                }else{
-//                    print("no error ==================")
-//                    self.donarTableView.reloadData()
-//                }
-//            }
-            
-            print("deleta wala he")
-//            let db = Database.database().reference().child("Donar List").observe(.childAdded, with: { (snapshot) in
-//                print(snapshot)
-//            })
+           // print(self.donarID[indexPath.row])
+            Database.database().reference(withPath: "Donar List").child(self.donarID[indexPath.row]).removeValue()
+            //self.remove(at: indexPath.row)
+            self.donarListArray.remove(at: indexPath.row)
+            self.donarTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.donarTableView.reloadData()
         }
         return [deleteAction]
     }
@@ -341,6 +323,24 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             self.color = UIColor.flatSand()?.hexValue()
             self.donarListArray.append(user_Donar)
             self.donarTableView.reloadData()
+            
+        }
+        
+        //            Database.database().reference().child("Donar List").observeSingleEvent(of: .value, with: { (snapshot) in
+        //                print("\(snapshot) snap shot he ye")
+        //                for snap in snapshot.children {
+        //                    let userSnap = snap as! DataSnapshot
+        //                    let uid1 = userSnap.key //the uid of each user
+        //                    print("\(uid1) user keys")
+        //                })
+        
+        Database.database().reference().child("Donar List").observeSingleEvent(of: .value) { (snapshot) in
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                let uid1 = userSnap.key //the uid of each user
+                print("\(uid1) user keys")
+                self.donarID.append(uid1)
+             }
         }
     }
     

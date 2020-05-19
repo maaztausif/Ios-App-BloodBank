@@ -85,6 +85,32 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
 
     }
     
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if userID == userReqDic[donarListArray[indexPath.row].name]!{
+            return true
+            
+        }else{
+            return false
+            
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            // print(self.donarID[indexPath.row])
+            Database.database().reference(withPath: "Donar List").child(self.donarID[indexPath.row]).removeValue()
+            //self.remove(at: indexPath.row)
+            self.donarListArray.remove(at: indexPath.row)
+            self.donarTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.donarTableView.reloadData()
+        }
+        return [deleteAction]
+    }
+    
+    
+    
+    
     func configureTableView(){
 //        requestTableView.rowHeight = UITableView.automaticDimension
 //        requestTableView.estimatedRowHeight = 300.2
