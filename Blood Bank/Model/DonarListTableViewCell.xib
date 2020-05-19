@@ -89,24 +89,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-Cq-I8G">
-                        <rect key="frame" x="352" y="28" width="30" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJg-vX-joz">
+                        <rect key="frame" x="344" y="85" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Call">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
-                        <connections>
-                            <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XuM-bg-emJ"/>
-                        </connections>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJg-vX-joz">
-                        <rect key="frame" x="352" y="95" width="33" height="30"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Chat">
+                        <state key="normal" image="chat">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <connections>
                             <action selector="btn_Chat:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MEp-dd-AYT"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a49-Cq-I8G">
+                        <rect key="frame" x="341" y="21" width="55" height="53"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="call">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <connections>
+                            <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XuM-bg-emJ"/>
                         </connections>
                     </button>
                 </subviews>
@@ -121,7 +121,11 @@
                 <outlet property="lbl_name" destination="vHx-YA-thW" id="bsh-df-ja4"/>
                 <outlet property="txt_phoneNo" destination="Tno-73-ebr" id="i3F-DC-Ls3"/>
             </connections>
-            <point key="canvasLocation" x="-1316" y="-89"/>
+            <point key="canvasLocation" x="-1317.3913043478262" y="-89.397321428571431"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="call" width="64" height="64"/>
+        <image name="chat" width="50" height="50"/>
+    </resources>
 </document>

@@ -58,6 +58,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     var otherUserName_S = ""
     var otherUserID_S = ""
     var for_Req = 2
+    var reqID = [String]()
     
     
     var request_Array = [Requests]()
@@ -87,7 +88,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if userID == userReqDic[donarListArray[indexPath.row].name]!{
+        if userID == userReqDic[request_Array[indexPath.row].name]!{
             return true
             
         }else{
@@ -99,11 +100,11 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
             // print(self.donarID[indexPath.row])
-            Database.database().reference(withPath: "Donar List").child(self.donarID[indexPath.row]).removeValue()
+            Database.database().reference(withPath: "Blood Request").child(self.reqID[indexPath.row]).removeValue()
             //self.remove(at: indexPath.row)
-            self.donarListArray.remove(at: indexPath.row)
-            self.donarTableView.deleteRows(at: [indexPath], with: .automatic)
-            self.donarTableView.reloadData()
+            self.request_Array.remove(at: indexPath.row)
+            self.requestTableView.deleteRows(at: [indexPath], with: .automatic)
+            self.requestTableView.reloadData()
         }
         return [deleteAction]
     }
@@ -112,9 +113,6 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     
     
     func configureTableView(){
-//        requestTableView.rowHeight = UITableView.automaticDimension
-//        requestTableView.estimatedRowHeight = 300.2
-        
         self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.estimatedRowHeight = 20.0 // Set this value as a good estimation according to your cells
     }
@@ -200,6 +198,17 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             self.configureTableView()
             self.requestTableView.reloadData()
         }
+        
+        
+        Database.database().reference().child("Blood Request").observeSingleEvent(of: .value) { (snapshot) in
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                let uid1 = userSnap.key //the uid of each user
+                print("\(uid1) user keys")
+                self.reqID.append(uid1)
+            }
+        }
+        
     }
     
     func progressLoading(){

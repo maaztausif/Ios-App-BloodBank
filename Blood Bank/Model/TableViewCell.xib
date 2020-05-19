@@ -89,18 +89,18 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-Q6-rnc">
-                        <rect key="frame" x="291" y="21" width="51" height="55"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8vU-Q6-rnc">
+                        <rect key="frame" x="279" y="22" width="51" height="53"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Call"/>
+                        <state key="normal" image="call"/>
                         <connections>
                             <action selector="btn_Call:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T48-vl-vIP"/>
                         </connections>
                     </button>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3K-3m-0RZ">
-                        <rect key="frame" x="298" y="96" width="44" height="34"/>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3K-3m-0RZ">
+                        <rect key="frame" x="277" y="96" width="54" height="55"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" title="Chat"/>
+                        <state key="normal" image="chat"/>
                         <connections>
                             <action selector="btn_Chat:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CSo-Gp-K3c"/>
                         </connections>
@@ -117,7 +117,11 @@
                 <outlet property="lbl_RequestFor" destination="lXX-Mv-FaB" id="Wxv-BS-Thh"/>
                 <outlet property="txt_PhoneNo" destination="Sih-0r-zJq" id="e8f-3D-G1F"/>
             </connections>
-            <point key="canvasLocation" x="-317.39130434782612" y="-57.589285714285708"/>
+            <point key="canvasLocation" x="-913.04347826086962" y="-103.125"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="call" width="64" height="64"/>
+        <image name="chat" width="50" height="50"/>
+    </resources>
 </document>
