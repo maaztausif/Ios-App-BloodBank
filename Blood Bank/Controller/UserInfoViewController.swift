@@ -29,6 +29,7 @@ class UserInfoViewController: UIViewController {
     @IBOutlet var txt_Disease: UITextField!
     
     var user_Id = ""
+    var childID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +56,20 @@ class UserInfoViewController: UIViewController {
             self.txt_lastBD.text = snapshotValue["Last Blood Donate"]!
             self.txt_Area.text = snapshotValue["Area"]!
             self.txt_Disease.text = snapshotValue["Blood disease"]!
-        }     
+            
+        }
         print("\(userID)==========================================================hoko")
-
+        
+                Database.database().reference().child("user: \(userID)").observeSingleEvent(of: .value) { (snapshot) in
+                    for snap in snapshot.children {
+                        let userSnap = snap as! DataSnapshot
+                        self.childID = userSnap.key //the uid of each user
+                        print("\(self.childID) user keys")
+                    }
+                }
+        
+        
+ 
     }
     
     
@@ -77,6 +89,8 @@ class UserInfoViewController: UIViewController {
             }
         }
         
+
+        let ref = Database.database().reference().root.child("user: \(userID)").child(childID).updateChildValues(userDic)
 
 
         

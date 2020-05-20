@@ -9,13 +9,19 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
+class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
 
     
     
     @IBOutlet var tableViewMsg: UITableView!
     @IBOutlet var txt_msg: UITextField!
     @IBOutlet var viewMsg: UIView!
+    @IBOutlet weak var heightConstraint:NSLayoutConstraint!
+    @IBOutlet weak var heightConstraint1:NSLayoutConstraint!
+    @IBOutlet weak var heightConstraint2:NSLayoutConstraint!
+
+    @IBOutlet var msgView: UIView!
+    
     var chat_Mod = 2
     
     var currentUserName = ""
@@ -34,6 +40,8 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        txt_msg.delegate = self
         print("\(check) for segue ==================Bhai segue to hua he")
         tableViewMsg.delegate = self
         tableViewMsg.dataSource = self
@@ -44,12 +52,39 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         print("user id = \(userId)")
         print("other user id = \(otherUserId)")
         print("other chat mod = \(chat_Mod)")
-
-        
-       // tableViewChat.register(UINib(nibName: "UserNameTableViewCell", bundle: nil), forCellReuseIdentifier: "userName")
-
         tableViewMsg.register(UINib(nibName: "MsgChatTableViewCell",bundle: nil), forCellReuseIdentifier: "msgChat")
+        
+        let tap_Gesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
+        tableViewMsg.addGestureRecognizer(tap_Gesture)
+        tableViewMsg.separatorStyle = .none
+        configureTableView()
+        
     }
+    
+    @objc func tableViewTapped(){
+        txt_msg.endEditing(true)
+    }
+    
+    func configureTableView(){
+        tableViewMsg.rowHeight = UITableView.automaticDimension
+        tableViewMsg.estimatedRowHeight = 120.0
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.5) {
+            self.heightConstraint1.constant = 362
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.heightConstraint1.constant = 50
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return msgArray.count
     }
@@ -264,7 +299,12 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
 
         
-
+        txt_msg.endEditing(false)
+   
+        UIView.animate(withDuration: 0.5) {
+            self.heightConstraint1.constant = 50
+            self.view.layoutIfNeeded()
+        }
         txt_msg.text = ""
     }
     

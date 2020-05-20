@@ -24,11 +24,11 @@ class MainScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.flatCoffeeColorDark()
-        btn_UserInfo.backgroundColor = UIColor.flatCoffee()
-        btn_bloodRequest.backgroundColor = UIColor.flatCoffee()
-        btn_donarRequest.backgroundColor = UIColor.flatCoffee()
-        btn_BloodInfo.backgroundColor = UIColor.flatCoffee()
-        btn_Chat.backgroundColor = UIColor.flatCoffee()
+//      btn_UserInfo.backgroundColor = UIColor.flatCoffee()
+ //       btn_bloodRequest.backgroundColor = UIColor.flatCoffee()
+ //       btn_donarRequest.backgroundColor = UIColor.flatCoffee()
+  //      btn_BloodInfo.backgroundColor = UIColor.flatCoffee()
+   //     btn_Chat.backgroundColor = UIColor.flatCoffee()
         
 
     }

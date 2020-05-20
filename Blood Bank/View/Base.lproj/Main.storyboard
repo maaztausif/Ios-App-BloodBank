@@ -168,33 +168,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7h-xP-MqP">
-                                <rect key="frame" x="68" y="358" width="114" height="78"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7h-xP-MqP">
+                                <rect key="frame" x="20" y="345" width="180" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Donar List">
+                                <state key="normal" title="   Donar" image="BloodDonar2">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="Qpp-DJ-yoD" kind="show" id="f4z-Fk-U0o"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kx8-Nj-qew">
-                                <rect key="frame" x="232" y="358" width="114" height="78"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kx8-Nj-qew">
+                                <rect key="frame" x="214" y="345" width="171" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Blood Request">
+                                <state key="normal" title="   Request" image="BloodRequest">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <segue destination="Fsr-Nd-AZg" kind="show" identifier="goToRequest" id="bNc-ZA-V46"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFS-zT-A0s">
-                                <rect key="frame" x="68" y="460" width="114" height="78"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EFS-zT-A0s">
+                                <rect key="frame" x="20" y="454" width="180" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Chat">
+                                <state key="normal" title="   Chat" image="chat2">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -202,22 +199,10 @@
                                     <segue destination="9S2-RE-r4l" kind="show" id="zZf-Ut-KQf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Oe-J9o">
-                                <rect key="frame" x="232" y="460" width="114" height="78"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-uv-nEK">
+                                <rect key="frame" x="150" y="200" width="114" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Blood Info">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="wcj-AC-KNc" kind="show" id="a7u-5i-wNR"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1x-uv-nEK">
-                                <rect key="frame" x="150" y="248" width="114" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.18507238379999999" green="0.69706005400000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="User Info">
+                                <state key="normal" image="userProfile">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -230,6 +215,16 @@
                                 <state key="normal" title="SignOut"/>
                                 <connections>
                                     <action selector="btn_signout:" destination="Vxa-ny-ZL2" eventType="touchUpInside" id="N3k-JJ-Yer"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wj0-Oe-J9o">
+                                <rect key="frame" x="214" y="454" width="171" height="101"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Blood Info" image="bloodInfo2">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wcj-AC-KNc" kind="show" id="a7u-5i-wNR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -285,9 +280,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-jm-9RP">
-                                <rect key="frame" x="0.0" y="88" width="414" height="698"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9CV-jm-9RP">
+                                <rect key="frame" x="0.0" y="88" width="414" height="710"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TDH-tj-lXw">
@@ -300,33 +294,48 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AQa-j3-D63">
-                                <rect key="frame" x="0.0" y="794" width="414" height="68"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AQa-j3-D63">
+                                <rect key="frame" x="0.0" y="799" width="414" height="63"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tEv-ny-Mmh">
-                                        <rect key="frame" x="8" y="14" width="320" height="41"/>
+                                        <rect key="frame" x="8" y="13" width="320" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-D4-Kc7">
-                                        <rect key="frame" x="345" y="19" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-D4-Kc7">
+                                        <rect key="frame" x="355" y="13" width="32" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" image="send"/>
                                         <connections>
                                             <action selector="msgSend:" destination="lH4-3u-ZT4" eventType="touchUpInside" id="nLO-qI-RH8"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="6TZ-oZ-r8f"/>
+                                    <constraint firstAttribute="height" constant="63" id="o2j-fN-BtS"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9CV-jm-9RP" firstAttribute="leading" secondItem="yC9-HR-Qlu" secondAttribute="leading" id="1ly-xe-BOy"/>
+                            <constraint firstItem="9CV-jm-9RP" firstAttribute="trailing" secondItem="yC9-HR-Qlu" secondAttribute="trailing" id="57N-uw-iJQ"/>
+                            <constraint firstItem="AQa-j3-D63" firstAttribute="top" secondItem="9CV-jm-9RP" secondAttribute="bottom" constant="1" id="CIU-s0-7tq"/>
+                            <constraint firstItem="AQa-j3-D63" firstAttribute="trailing" secondItem="yC9-HR-Qlu" secondAttribute="trailing" id="Gcp-wx-Oxa"/>
+                            <constraint firstItem="AQa-j3-D63" firstAttribute="bottom" secondItem="yC9-HR-Qlu" secondAttribute="bottom" id="NT6-6W-aBy"/>
+                            <constraint firstItem="9CV-jm-9RP" firstAttribute="top" secondItem="yC9-HR-Qlu" secondAttribute="top" id="dYy-3o-g94"/>
+                            <constraint firstItem="AQa-j3-D63" firstAttribute="leading" secondItem="yC9-HR-Qlu" secondAttribute="leading" id="fwB-RI-MQC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="yC9-HR-Qlu"/>
                     </view>
                     <connections>
+                        <outlet property="heightConstraint1" destination="o2j-fN-BtS" id="9L4-Cr-inF"/>
+                        <outlet property="heightConstraint2" destination="o2j-fN-BtS" id="uFJ-Kb-wA8"/>
+                        <outlet property="msgView" destination="AQa-j3-D63" id="dH5-26-Sdf"/>
                         <outlet property="tableViewMsg" destination="9CV-jm-9RP" id="sKG-32-cfq"/>
                         <outlet property="txt_msg" destination="tEv-ny-Mmh" id="3zQ-lX-3fb"/>
                         <outlet property="viewMsg" destination="AQa-j3-D63" id="ER3-JL-BxU"/>
@@ -1055,10 +1064,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BloodDonar2" width="50" height="50"/>
+        <image name="BloodRequest" width="50" height="50"/>
+        <image name="bloodInfo2" width="64" height="64"/>
         <image name="blood_info" width="1098" height="526"/>
+        <image name="chat2" width="50" height="50"/>
         <image name="save" width="64" height="64"/>
+        <image name="send" width="32" height="32"/>
         <image name="signIn" width="64" height="64"/>
         <image name="signUp" width="40" height="40"/>
+        <image name="userProfile" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9s9-ww-vle"/>
