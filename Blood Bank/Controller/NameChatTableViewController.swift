@@ -60,7 +60,7 @@ class ChatTableViewController: UITableViewController {
         otherUserName = userNamesArray[indexPath.row]
         otherUserId = dic[otherUserName]!
 
-        
+        print("\(otherUserName)======================234")
         performSegue(withIdentifier: "goToChat", sender: self)
         
     }
@@ -108,18 +108,20 @@ class ChatTableViewController: UITableViewController {
     }
     
     func getNameCurrentUser(){
-        let userID = Auth.auth().currentUser?.uid ?? "error"
-        let db = Database.database().reference().child("user: \(userID)")
+        print("current user name ====-=-=--")
+        user_ID = Auth.auth().currentUser?.uid ?? "error"
+        print(user_ID)
+        let db = Database.database().reference().child("user: \(user_ID)")
         db.observe(.childAdded) { (snapshot) in
-        let snapshotValue = snapshot.value as! Dictionary<String,String>
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
             print(snapshot)
             if let currentName = snapshotValue["Name"]{
                 self.currentUserName = currentName
                 print(" this is current user name : \(self.currentUserName)=======================")
 
             }
-
         }
+        print("current user name ====-=-=--")
 
     }
     

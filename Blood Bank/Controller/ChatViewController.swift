@@ -126,7 +126,7 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
 //                        print("No error")
 //                    }
 //                }
-        if chat_Mod == 1{
+ //       if chat_Mod == 1{
             
             print("\(chat_Mod)chat mod 1 he bhai ye =================")
             if otherUserId == ""{
@@ -154,55 +154,9 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                                 print("No error")
                             }
                         }
-                    }
-                    
-                    
-                }
-                
-                //            let database2 = Database.database().reference().child("chat").child("\(userId)\(donar_OtherUserID)")
-                //            database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-                //
-                //                if error != nil{
-                //                    print("error in saving")
-                //                }else{
-                //                    print("No error")
-                //                }
-                //            }
-                
-            }else{
-                let database2 = Database.database().reference().child("chat").child("\(userId)\(otherUserId)")
-                database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-                    
-                    if error != nil{
-                        print("error in saving")
-                    }else{
-                        print("No error")
-                    }
-                }
-                
-            }
-            
-        }else if chat_Mod == 0{
-            
-            
-            if otherUserId == ""{
-                print("other userid khali he bhai")
-                
-                let db = Database.database().reference().child("Donar List")
-                db.observe(.childAdded) { (snapshot) in
-                    print("donar snapshot = \(snapshot)============================")
-                    let snapshotValue = snapshot.value as! Dictionary<String,String>
-                    
-                    if self.otherUserName == snapshotValue["Name"]!{
-                        self.donar_OtherUserID = snapshotValue["User ID"]!
-                        print("jo ai he value donar list se id = \(self.donar_OtherUserID)")
                         
-                        
-                        //check
-                        
-                        
-                        let database2 = Database.database().reference().child("chat").child("\(self.userId)\(self.donar_OtherUserID)")
-                        database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+                        let database = Database.database().reference().child("chat").child("\(self.donar_OtherUserID)\(self.userId)")
+                        database.childByAutoId().setValue(msgDic) { (error, refrence) in
                             
                             if error != nil{
                                 print("error in saving")
@@ -210,22 +164,15 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                                 print("No error")
                             }
                         }
+                        
                     }
                     
                     
                 }
+
                 
-                //            let database2 = Database.database().reference().child("chat").child("\(userId)\(donar_OtherUserID)")
-                //            database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-                //
-                //                if error != nil{
-                //                    print("error in saving")
-                //                }else{
-                //                    print("No error")
-                //                }
-                //            }
-                
-            }else{
+            }
+            else{
                 let database2 = Database.database().reference().child("chat").child("\(userId)\(otherUserId)")
                 database2.childByAutoId().setValue(msgDic) { (error, refrence) in
                     
@@ -236,56 +183,8 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                     }
                 }
                 
-            }
-            
-            
-        }else{
-            print("\(chat_Mod)chat mod else he ye he bhai ye =================")
-
-            
-            if otherUserId == ""{
-                print("other userid khali he bhai")
-                
-                let db = Database.database().reference().child("Donar List")
-                db.observe(.childAdded) { (snapshot) in
-                    print("donar snapshot = \(snapshot)============================")
-                    let snapshotValue = snapshot.value as! Dictionary<String,String>
-                    
-                    if self.otherUserName == snapshotValue["Name"]!{
-                        self.donar_OtherUserID = snapshotValue["User ID"]!
-                        print("jo ai he value donar list se id = \(self.donar_OtherUserID)")
-                        
-                        
-                        //check
-                        
-                        
-                        let database2 = Database.database().reference().child("chat").child("\(self.userId)\(self.donar_OtherUserID)")
-                        database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-                            
-                            if error != nil{
-                                print("error in saving")
-                            }else{
-                                print("No error")
-                            }
-                        }
-                    }
-                    
-                    
-                }
-                
-                //            let database2 = Database.database().reference().child("chat").child("\(userId)\(donar_OtherUserID)")
-                //            database2.childByAutoId().setValue(msgDic) { (error, refrence) in
-                //
-                //                if error != nil{
-                //                    print("error in saving")
-                //                }else{
-                //                    print("No error")
-                //                }
-                //            }
-                
-            }else{
-                let database2 = Database.database().reference().child("chat").child("\(userId)\(otherUserId)")
-                database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+                let database = Database.database().reference().child("chat").child("\(otherUserId)\(userId)")
+                database.childByAutoId().setValue(msgDic) { (error, refrence) in
                     
                     if error != nil{
                         print("error in saving")
@@ -296,9 +195,109 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
                 
             }
             
-        }
+ //       }
+//        else if chat_Mod == 0{
+            
+            
+//            if otherUserId == ""{
+//                print("other userid khali he bhai")
+//
+//                let db = Database.database().reference().child("Donar List")
+//                db.observe(.childAdded) { (snapshot) in
+//                    print("donar snapshot = \(snapshot)============================")
+//                    let snapshotValue = snapshot.value as! Dictionary<String,String>
+//
+//                    if self.otherUserName == snapshotValue["Name"]!{
+//                        self.donar_OtherUserID = snapshotValue["User ID"]!
+//                        print("jo ai he value donar list se id = \(self.donar_OtherUserID)")
+//
+//
+//                        //check
+//
+//
+//                        let database2 = Database.database().reference().child("chat").child("\(self.userId)\(self.donar_OtherUserID)")
+//                        database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+//
+//                            if error != nil{
+//                                print("error in saving")
+//                            }else{
+//                                print("No error")
+//                            }
+//                        }
+//                    }
+//
+//
+//                }
+//
+//
+//
+//            }
+//            else{
+//                let database2 = Database.database().reference().child("chat").child("\(userId)\(otherUserId)")
+//                database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+//
+//                    if error != nil{
+//                        print("error in saving")
+//                    }else{
+//                        print("No error")
+//                    }
+//                }
+//
+//            }
+            
+            
+ //       }
+//        else{
+ //           print("\(chat_Mod)chat mod else he ye he bhai ye =================")
+//
+            
+//            if otherUserId == ""{
+//                print("other userid khali he bhai")
+//
+//                let db = Database.database().reference().child("Donar List")
+//                db.observe(.childAdded) { (snapshot) in
+//                    print("donar snapshot = \(snapshot)============================")
+//                    let snapshotValue = snapshot.value as! Dictionary<String,String>
+//
+//                    if self.otherUserName == snapshotValue["Name"]!{
+//                        self.donar_OtherUserID = snapshotValue["User ID"]!
+//                        print("jo ai he value donar list se id = \(self.donar_OtherUserID)")
+//
+//
+//                        //check
+//
+//
+//                        let database2 = Database.database().reference().child("chat").child("\(self.userId)\(self.donar_OtherUserID)")
+//                        database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+//
+//                            if error != nil{
+//                                print("error in saving")
+//                            }else{
+//                                print("No error")
+//                            }
+//                        }
+//                    }
+//
+//
+//                }
+//
+//
+//            }
+//            else{
+//                let database2 = Database.database().reference().child("chat").child("\(userId)\(otherUserId)")
+//                database2.childByAutoId().setValue(msgDic) { (error, refrence) in
+//
+//                    if error != nil{
+//                        print("error in saving")
+//                    }else{
+//                        print("No error")
+//                    }
+//                }
+//
+//            }
+//
+ //       }
 
-        
         txt_msg.endEditing(false)
    
         UIView.animate(withDuration: 0.5) {
