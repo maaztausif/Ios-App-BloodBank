@@ -64,7 +64,9 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+       // toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.tintColor = UIColor.black
+
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
@@ -162,12 +164,12 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
             
             let userID = Auth.auth().currentUser?.uid ?? "error"
             
-            let userDB = Database.database().reference().child("user: \(userID)")
+            let userDB = Database.database().reference().child("user: \(userID)").childByAutoId()
             print("\(user_Id)==========================================================")
             
             let userDic = ["Name":txt_Name.text!,"Email":txt_Email.text!,"Phone No":txt_PhoneNo.text!,"Blood Type":txt_BloodType.text!,"Gender":txt_Gender.text!,"Area":txt_Area.text!,"Date Of Birth":txt_DOB.text!,"Last Blood Donate":txt_lastBD.text!,"Blood disease":txt_Disease.text!]
             
-            userDB.childByAutoId().setValue(userDic) { (error, refrence) in
+            userDB.setValue(userDic) { (error, refrence) in
                 if error != nil{
                     self.stopAnimating()
                     print("saving database error=================================================")

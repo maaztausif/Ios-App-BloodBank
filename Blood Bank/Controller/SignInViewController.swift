@@ -46,6 +46,8 @@ class SignInViewController: UIViewController ,NVActivityIndicatorViewable{
                 }else{
                     print("SignIn successful")
                     self.stopAnimating()
+                    self.txt_Email.text = ""
+                    self.txt_Password.text = ""
                     self.performSegue(withIdentifier: "goToMain", sender: self)
                 }
             }

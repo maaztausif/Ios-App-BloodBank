@@ -78,32 +78,52 @@ class UserInfoViewController: UIViewController {
         let userDic = ["Name":txt_Name.text!,"Email":txt_Email.text!,"Phone No":txt_PhoneNo.text!,"Blood Type":txt_BloodType.text!,"Gender":txt_Gender.text!,"Area":txt_Area.text!,"Date Of Birth":txt_DOB.text!,"Last Blood Donate":txt_lastBD.text!,"Blood disease":txt_Disease.text!]
         
         print(userDic)
-        
         let userID = Auth.auth().currentUser?.uid ?? "error"
-        let db = Database.database().reference()
-        db.child("user: \(userID)").setValue(userDic) { (error, refrence) in
-            if error != nil{
-                print("update nai hua")
-            }else{
-                print("update ho gya he")
-            }
-        }
-        
-
-        let ref = Database.database().reference().root.child("user: \(userID)").child(childID).updateChildValues(userDic)
-
 
         
-//        ref.child("users").child(user.uid).setValue(dic) {
-//            (error:Error?, ref:DatabaseReference) in
-//            if let error = error {
-//                print("Data could not be saved: \(error).")
-//            } else {
-//                print("Data saved successfully!")
+//        let db = Database.database().reference()
+//        db.child("user: \(userID)").setValue(userDic) { (error, refrence) in
+//            if error != nil{
+//                print("update nai hua")
+//            }else{
+//                print("update ho gya he")
 //            }
 //        }
         
-      retrieveUserData()
+
+        let ref = Database.database().reference().root.child("user: \(userID)").childByAutoId().updateChildValues(userDic) { (error, refrence) in
+            if error != nil{
+                print("updating error")
+                
+                let alert = UIAlertController(title: "Error In Update", message: "", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                })
+                
+                alert.addAction(action)
+                self.present(alert,animated: true,completion: nil)
+                
+                
+            }else{
+                print("no error in update")
+                
+                let alert = UIAlertController(title: "Update Complete", message: "", preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                    
+                })
+                
+                alert.addAction(action)
+                self.present(alert,animated: true,completion: nil)
+                
+                
+            }
+        }
+
+        Database.database().reference(withPath: "user: \(userID)").child(self.childID).removeValue()
+
+        
+        
+       retrieveUserData()
         
     }
     

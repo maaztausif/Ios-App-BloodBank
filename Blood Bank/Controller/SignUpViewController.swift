@@ -21,7 +21,7 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
     
     @IBOutlet var btn_signUp: UIButton!
     
-    @IBOutlet var txt_Name: HoshiTextField!
+//    @IBOutlet var txt_Name: HoshiTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +76,8 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
                     }
                     
                     self.stopAnimating()
+                    self.txt_Password.text = ""
+                    self.txt_Email.text = ""
                     self.performSegue(withIdentifier: "goToInfo", sender: self)
                     
                 }
@@ -85,16 +87,11 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
 
     }
     
-    
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! InfoViewController
         vc.user_Id = txt_Email.text! 
     }
-    
-    
-    
+  
     func progressLoading(){
         let size = CGSize(width: 100, height: 100)
         startAnimating(size, message: "Loading...", type: NVActivityIndicatorType.pacman, color: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),  textColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), fadeInAnimation: nil)

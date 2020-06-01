@@ -13,12 +13,16 @@ import NVActivityIndicatorView
 import ChameleonFramework
 import FirebaseAuth
 
+
+
 class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,NVActivityIndicatorViewable {
 
     var currentTextField : Int!
     let pickerView = UIPickerView()
     var currentTextFieldName : UITextField!
     var user_ID = ""
+    var delegate:forSegue!
+
 
 
     
@@ -27,6 +31,7 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
     @IBOutlet var txt_BloodType: HoshiTextField!
     @IBOutlet var txt_LastBloodDonate: HoshiTextField!
     @IBOutlet var txt_phoneNo: HoshiTextField!
+    
     
     let bloodTypes = ["","A+","A-","O+","O-","B+","B-","AB+","AB-"]
     let gender = ["","Male","Female","Unspecified"]
@@ -47,7 +52,9 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        //toolBar.tintColor = UIColor(red: 76/255, green: 217/255, blue: 100/255, alpha: 1)
+        toolBar.tintColor = UIColor.black
+
         toolBar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.donePicker))
@@ -135,6 +142,20 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
                     
                     let alert = UIAlertController(title: "Saved Successful", message: "", preferredStyle: .alert)
                     let action = UIAlertAction(title: "Ok", style: .default) { (aAction) in
+                        self.txt_Name.text = ""
+                        self.txt_phoneNo.text = ""
+                        self.txt_Gender.text = ""
+                        self.txt_BloodType.text = ""
+                        self.txt_LastBloodDonate.text = ""
+                        
+//                        if(self.delegate != nil){ //Just to be safe.
+//                            self.delegate.callSegue()
+//                        }else{
+//                            print("call segue nil he bhai===================")
+//                        }
+                        
+                        self.navigationController?.popViewController(animated: true)
+
                         
                     }
                     alert.addAction(action)
