@@ -17,11 +17,9 @@ protocol MyCustomCellDelegator {
     func sendDataFromSegue(userName_D : String,otherUserName_D:String,userID_D:String,otherUserID_D:String)
 }
 
-protocol forSegue {
-    func callSegue()
-}
+
 //,SwipeTableViewCellDelegate
-class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator,forSegue{
+class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator{
 
 
     
@@ -51,20 +49,19 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     override func viewDidLoad() {
         super.viewDidLoad()
         userID = Auth.auth().currentUser?.uid ?? "error"
+        retrieveDonarLis()
         retrieveData()
         getNameCurrentUser()
         donarTableView.register(UINib(nibName: "DonarListTableViewCell", bundle: nil), forCellReuseIdentifier: "DonarCell")
-        retrieveDonarLis()
         tableView.separatorStyle = .none
         
 //        donarTableView.reloadData()
+      //  self.donarTableView.reloadData()
 
         
     }
     
-    func callSegue(){
-        performSegue(withIdentifier: "goToDonar", sender: self )
-    }
+
     
     // swipe cell
 //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
@@ -108,7 +105,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
+            
             print(self.donarID[indexPath.row])
 
                 Database.database().reference(withPath: "Donar List").child(self.donarID[indexPath.row]).removeValue()
@@ -116,9 +115,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
                 self.donarListArray.remove(at: indexPath.row)
                 self.donarTableView.deleteRows(at: [indexPath], with: .automatic)
                 self.donarTableView.reloadData()
-          
-            
         }
+
         return [deleteAction]
     }
     
@@ -147,8 +145,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             destinationVC.otherUserId = otherUserID_Segue
             destinationVC.otherUserName = otherUserName_Segue
             destinationVC.userId = userID_Segue
-            
-            
         }
         
     }
@@ -159,8 +155,6 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         otherUserName_Segue = otherUserName_D
         otherUserID_Segue = otherUserID_D
         userID_Segue = userID_D
-        
-
         
         print("from Donar UserName = \(currentUserName_Segue)")
         print("from Donar otherUserName= \(otherUserName_Segue)")
@@ -270,7 +264,7 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         print("\(userID) : userID")
         print("\(currentUserName) : userName")
         print("\(otherUserName) : otherUserName")
-//        donarTableView.reloadData()
+        donarTableView.reloadData()
    
     }
     
@@ -352,11 +346,13 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
                 let uid1 = userSnap.key //the uid of each user
                 print("\(uid1) user keys")
                 self.donarID.append(uid1)
+
              }
         }
-    }
-    
+        
+        self.donarTableView.reloadData()
 
+    }
     
     func getNameCurrentUser(){
         let userID = Auth.auth().currentUser?.uid ?? "error"
@@ -366,14 +362,10 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
             if let currentName = snapshotValue["Name"]{
                 self.currentUserName = currentName
                 print(" this is current user name : \(self.currentUserName)=======================")
-                
             }
             
         }
         
     }
     
-
-
-
 }

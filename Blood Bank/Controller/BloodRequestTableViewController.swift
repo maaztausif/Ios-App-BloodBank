@@ -108,9 +108,7 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
         }
         return [deleteAction]
     }
-    
-    
-    
+
     
     func configureTableView(){
         self.tableView.rowHeight = UITableView.automaticDimension

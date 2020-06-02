@@ -21,9 +21,6 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
     let pickerView = UIPickerView()
     var currentTextFieldName : UITextField!
     var user_ID = ""
-    var delegate:forSegue!
-
-
 
     
     @IBOutlet var txt_Name: HoshiTextField!
