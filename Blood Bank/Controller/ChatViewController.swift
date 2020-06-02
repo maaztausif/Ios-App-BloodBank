@@ -114,6 +114,9 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         return 86.0
     }
     
+    // MARK: - Btn send msg and saving chat of current user
+
+    
     @IBAction func msgSend(_ sender: Any) {
         
         let msgDic = ["Sender":"\(currentUserName)","Message":"\(txt_msg.text!)"]
@@ -306,6 +309,9 @@ class ChatViewController: UIViewController ,UITableViewDelegate,UITableViewDataS
         }
         txt_msg.text = ""
     }
+    
+    // MARK: - retrieving msg chat of current user
+
     
     func retrieveMsg() {
         

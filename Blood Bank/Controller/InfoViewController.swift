@@ -85,6 +85,9 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     }
     
    
+    // MARK: - picker View and keyboard Selection
+
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -93,6 +96,8 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
         textField.inputView = pickerView
     }
     
+    // MARK: - pickerView functions
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
             return 1
@@ -152,6 +157,9 @@ class InfoViewController: UIViewController,UIPickerViewDelegate,UIPickerViewData
     @objc func donePicker() {
         currentTextFieldName.resignFirstResponder()
     }
+    
+    // MARK: - btn saving data into 
+
 
     @IBAction func btn_Send_ToMain(_ sender: Any) {
         progressLoading()

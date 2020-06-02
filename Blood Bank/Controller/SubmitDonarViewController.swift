@@ -46,6 +46,9 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         
         view.backgroundColor = UIColor.flatCoffee()
 
+        // MARK: - Ok and Canceel Button in pickerView
+
+        
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
         toolBar.isTranslucent = true
@@ -72,7 +75,8 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         currentTextFieldName.resignFirstResponder()
     }
     
-    
+    // MARK: - picker View and keyboard Selection
+
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         pickerView.delegate = self
@@ -81,6 +85,9 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         textField.inputView = pickerView
         currentTextFieldName = textField
     }
+    
+    // MARK: - picker View functions
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -117,6 +124,9 @@ class SubmitDonarViewController: UIViewController,UITextFieldDelegate,UIPickerVi
         }
     }
 
+    // MARK: - btn Submit for donar data into database
+
+    
     @IBAction func submitDonation(_ sender: Any) {
         if txt_Name.text == "" || txt_Gender.text == "" || txt_BloodType.text == ""  || txt_LastBloodDonate.text == "" || txt_phoneNo.text == ""{
             

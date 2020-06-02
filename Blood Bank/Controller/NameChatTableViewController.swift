@@ -33,6 +33,9 @@ class ChatTableViewController: UITableViewController {
 
 
     }
+    
+    // MARK: - Table View Functions
+
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userNamesArray.count
@@ -75,6 +78,9 @@ class ChatTableViewController: UITableViewController {
     }
     
 
+    // MARK: - retrieving user name database from all user
+
+    
     func retrieveData(){
         let database = Database.database().reference().child("All Users")
         
@@ -105,6 +111,9 @@ class ChatTableViewController: UITableViewController {
         }
 
     }
+    
+    // MARK: - getting current user name
+
     
     func getNameCurrentUser(){
         print("current user name ====-=-=--")

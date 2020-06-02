@@ -31,6 +31,9 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
         btn_signUp.clipsToBounds = true
     }
     
+    // MARK: - SignUp Button
+
+    
     @IBAction func signUp_btn(_ sender: Any) {
         
         if txt_Email.text == "" || txt_Password.text == ""{
@@ -86,6 +89,9 @@ class SignUpViewController: UIViewController,NVActivityIndicatorViewable {
         }
 
     }
+    
+    // MARK: - From Segue to send value to other view controller
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let vc = segue.destination as! InfoViewController

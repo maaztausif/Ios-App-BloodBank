@@ -94,6 +94,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
     //swipe cell kit
     
     
+    // MARK: - enable swipe cell kit only for current cureent user
+
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if userID == userReqDic[donarListArray[indexPath.row].name]!{
             return true
@@ -103,6 +106,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
 
         }
     }
+    
+    // MARK: - Deletion of Donarcell
+
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
@@ -129,6 +135,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         performSegue(withIdentifier: "goToChat", sender: self )
     }
     
+    // MARK: - performing segue into xib chat button
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToChat"{
@@ -148,6 +156,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         }
         
     }
+    
+    // MARK: - Getting data from donar list tableView
+
     
     func sendDataFromSegue(userName_D: String, otherUserName_D: String, userID_D: String, otherUserID_D: String) {
         
@@ -312,6 +323,8 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         
     }
     
+    // MARK: - retrieving donar data fuction
+
 
     func retrieveDonarLis(){
         let donarDB = Database.database().reference().child("Donar List")
@@ -340,6 +353,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         //                    print("\(uid1) user keys")
         //                })
         
+        // MARK: - getting ChildAutoID() of donarList Database
+
+        
         Database.database().reference().child("Donar List").observeSingleEvent(of: .value) { (snapshot) in
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
@@ -353,6 +369,9 @@ class DonarListTableViewController: UITableViewController ,MyCustomCellDelegator
         self.donarTableView.reloadData()
 
     }
+    
+    // MARK: - getting Current user name
+
     
     func getNameCurrentUser(){
         let userID = Auth.auth().currentUser?.uid ?? "error"

@@ -86,6 +86,8 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
 
     }
     
+    // MARK: - deletion swipe table cell for current user
+
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         if userID == userReqDic[request_Array[indexPath.row].name]!{
@@ -96,6 +98,9 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             
         }
     }
+    
+    // MARK: -  Swipe table deletion code
+
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
@@ -177,6 +182,9 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     }
     
     
+    // MARK: - retrieving blood request database function
+
+    
     func RetrieveMsg(){
         let request_DB = Database.database().reference().child("Blood Request")
         
@@ -197,6 +205,8 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
             self.requestTableView.reloadData()
         }
         
+        // MARK: - getting child AutiID() Code
+
         
         Database.database().reference().child("Blood Request").observeSingleEvent(of: .value) { (snapshot) in
             for snap in snapshot.children {
@@ -216,6 +226,9 @@ class BloodRequestTableViewController: UITableViewController ,NVActivityIndicato
     }
  
 
+    // MARK: - get user name function	
+
+    
     func getNameCurrentUser(){
         userID = Auth.auth().currentUser?.uid ?? "error"
         let db = Database.database().reference().child("user: \(userID)")

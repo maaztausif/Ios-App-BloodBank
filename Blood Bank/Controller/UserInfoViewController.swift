@@ -37,6 +37,9 @@ class UserInfoViewController: UIViewController {
         view.backgroundColor = UIColor.flatCoffee()
     }
     
+    // MARK: - Retrieving data from Database
+
+    
     func retrieveUserData(){
         
         
@@ -72,6 +75,8 @@ class UserInfoViewController: UIViewController {
  
     }
     
+    // MARK: - update Button
+
     
     @IBAction func update(_ sender: Any) {
         

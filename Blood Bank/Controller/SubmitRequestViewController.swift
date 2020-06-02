@@ -39,6 +39,8 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         
         view.backgroundColor = UIColor.flatCoffee()
         
+        // MARK: - For PickerView
+
         
         let toolBar = UIToolbar()
         toolBar.barStyle = UIBarStyle.default
@@ -67,6 +69,8 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         currentTextFieldName.resignFirstResponder()
     }
     
+    // MARK: - picker View and keyboard Selection
+
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         pickerView.delegate = self
@@ -119,6 +123,8 @@ class SubmitRequestViewController: UIViewController,UIPickerViewDelegate,UIPicke
         }
     }
     
+    // MARK: - Btn saving to database
+
     
     @IBAction func btn_Save_Request(_ sender: Any) {
         
